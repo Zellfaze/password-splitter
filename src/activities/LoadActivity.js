@@ -56,7 +56,7 @@ class LoadActivity extends Component {
       default:
       case stages.CIPHERTEXT:
         return (
-          <LoadActivityStage1 onNextSection={this.advanceSection1} />
+          <LoadActivityStage1 onNextSection={this.advanceSection1} addMessage={this.props.addMessage} />
         );
       case stages.CREDENTIALS:
         return (
