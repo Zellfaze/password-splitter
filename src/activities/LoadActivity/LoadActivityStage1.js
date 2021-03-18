@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
-import InputBlock from '../../components/InputBlock.js';
 import KeyInputBlock from '../../components/KeyInputBlock.js';
 import Jquery from 'jquery';
 import CryptoFunctions from '../../crypto.js';
@@ -26,7 +25,7 @@ class LoadActivityStage1 extends Component {
     }
     
     // Try to fetch the blob from the server
-    Jquery.get(`/api/get/${this.state.id}`, (data) => {
+    Jquery.get(`/api/get/${this.state.id}`).then( (data) => {
       // Validate that this blob is good
       if ((data.status !== 200) || (!CryptoFunctions.validateBlob(data.data.blob))) { this.props.addMessage("Invalid ID!", "danger"); return; }
       

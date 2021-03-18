@@ -17,10 +17,6 @@ const stages = {
 class SaveActivity extends Component {
   constructor(props) {
     super(props);
-    let emptyShareObject = {
-      username: "",
-      password: "",
-    };
     
     this.state = {
       stagenumber: 0,
@@ -40,11 +36,15 @@ class SaveActivity extends Component {
   }
   
   generateCipherText(plaintext, groupSize, requiredMembers, credentials) {
+    // Generate the blob
     CryptoFunctions.generateBlob(plaintext, groupSize, requiredMembers, credentials).then( (blob) => {
+      // Attempt to save the blob
       this.props.addMessage("Saving...", "info");
-      Jquery.post(`/api/store/`, {blob: blob}, (response) => {
-        if (response.status !== 201) { return this.props.addMessage("Unable to store data on the server!", "danger"); }
+      return Jquery.post(`/api/store/`, {blob: blob}).then( (response) => {
+        // Make sure that the data was saved
+        if (response.status !== 201) { return Promise.reject("Unable to store data on the server!"); }
         
+        // Everything went fine, let's show them the ID
         this.props.addMessage("Saved.", "info");
         this.setState({
           stagenumber: this.state.stagenumber+1,
