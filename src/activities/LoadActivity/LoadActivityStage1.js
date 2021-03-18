@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
-import CipherTextInputBlock from '../../components/CipherTextInputBlock.js';
+import InputBlock from '../../components/InputBlock.js';
 
 class LoadActivityStage1 extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class LoadActivityStage1 extends Component {
   render() {
     return (
       <ActivityStage components={
-        <CipherTextInputBlock setText={this.setCiphertext} text={this.state.cipherText}/>
+        <InputBlock title="Ciphertext" setText={this.setCiphertext} label="Ciphertext"  text={this.state.cipherText} />
       } instructions={<LoadText />} advanceSection={this.advanceSection} />
     );
   }
