@@ -82,7 +82,7 @@ function decryptBlob(blob, credentials) {
     try {
       parsedBlob = JSON.parse(blob);
     } catch (err) {
-      reject(err.message);
+      reject("Unable to parse blob! Corrupted?");
       return;
     }
     
@@ -237,7 +237,7 @@ function extractMetadataFromBlob(blob) {
     try {
       parsedBlob = JSON.parse(blob);
     } catch (err) {
-      reject(err.message);
+      reject("Unable to parse blob! Corrupted?");
       return;
     }
     
