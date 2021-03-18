@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import PlainTextBlock from '../../components/PlainTextBlock.js';
-import NextButton from '../../components/NextButton.js';
 
 class SaveActivityStage1 extends Component {
   constructor(props) {
@@ -27,11 +27,9 @@ class SaveActivityStage1 extends Component {
   
   render() {
     return (
-      <div className="container-fluid mt-2">
-        <SaveText />
+      <ActivityStage components={
         <PlainTextBlock setPlaintext={this.setPlaintext} plainText={this.state.plainText}/>
-        <NextButton onClick={this.advanceSection}/>
-      </div>
+      } instructions={<SaveText />} advanceSection={this.advanceSection} />
     );
   }
 }

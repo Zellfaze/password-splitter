@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
 import CipherTextInputBlock from '../../components/CipherTextInputBlock.js';
-import NextButton from '../../components/NextButton.js';
 
 class LoadActivityStage1 extends Component {
   constructor(props) {
@@ -27,11 +27,9 @@ class LoadActivityStage1 extends Component {
   
   render() {
     return (
-      <div className="container-fluid mt-2">
-        <LoadText />
+      <ActivityStage components={
         <CipherTextInputBlock setText={this.setCiphertext} text={this.state.cipherText}/>
-        <NextButton onClick={this.advanceSection}/>
-      </div>
+      } instructions={<LoadText />} advanceSection={this.advanceSection} />
     );
   }
 }

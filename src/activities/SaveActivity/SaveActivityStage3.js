@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import UserCredentialBlock from '../../components/UserCredentialBlock.js';
-import NextButton from '../../components/NextButton.js';
 
 class SaveActivityStage3 extends Component {
   constructor(props) {
@@ -51,11 +51,7 @@ class SaveActivityStage3 extends Component {
     });
     
     return (
-      <div className="container-fluid mt-2">
-        <SaveText />
-        {credentials}
-        <NextButton onClick={this.advanceSection}/>
-      </div>
+      <ActivityStage components={credentials} instructions={<SaveText />} advanceSection={this.advanceSection} />
     );
   }
 }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
 import UserCredentialBlock from '../../components/UserCredentialBlock.js';
 import DiscoveredDataBlock from '../../components/DiscoveredDataBlock.js';
-import NextButton from '../../components/NextButton.js';
 
 class LoadActivityStage3 extends Component {
   constructor(props) {
@@ -52,12 +52,12 @@ class LoadActivityStage3 extends Component {
     });
     
     return (
-      <div className="container-fluid mt-2">
-        <LoadText />
-        <DiscoveredDataBlock users={this.props.users}/>
-        {credentials}
-        <NextButton onClick={this.advanceSection}/>
-      </div>
+      <ActivityStage components={
+        <Fragment>
+          <DiscoveredDataBlock users={this.props.users} />
+          {credentials}
+        </Fragment>
+      } instructions={<LoadText />} advanceSection={this.advanceSection} />
     );
   }
 }

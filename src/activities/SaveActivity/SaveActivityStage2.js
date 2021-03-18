@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import XofNBlock from '../../components/XofNBlock.js';
-import NextButton from '../../components/NextButton.js';
 
 class SaveActivityStage2 extends Component {
   constructor(props) {
@@ -31,11 +31,9 @@ class SaveActivityStage2 extends Component {
   
   render() {
     return (
-      <div className="container-fluid mt-2">
-        <SaveText />
+      <ActivityStage components={
         <XofNBlock setGroupSize={this.setGroupSize} setRequiredMembers={this.setRequiredMembers} groupSize={this.state.groupSize} requiredMembers={this.state.requiredMembers}/>
-        <NextButton onClick={this.advanceSection}/>
-      </div>
+      } instructions={<SaveText />} advanceSection={this.advanceSection} />
     );
   }
 }
