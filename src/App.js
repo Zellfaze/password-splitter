@@ -10,12 +10,26 @@ import LoadActivity from './activities/LoadActivity.js';
 import HeaderBlock from './components/HeaderBlock.js';
 import ErrorBlock from './components/ErrorBlock.js';
 
+const validParamSize = 16;
+
 class App extends Component {
   constructor(props) {
     super(props);
+    
+    // Check the URLSearchParams for an ID, if there is one, let's start on
+    // the LOAD activity and jump right in.
+    let initID = null;
+    let initActivity = constants.activities.HOME;
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("id") && (params.get("id").length === validParamSize)) {
+      initID = params.get("id");
+      initActivity = constants.activities.LOAD;
+    }
+    
     this.state = {
-      currentActivity: constants.activities.HOME,
-      messages: []
+      currentActivity: initActivity,
+      messages: [],
+      id: initID
     };
     
     this.changeActivity = this.changeActivity.bind(this);
@@ -59,7 +73,7 @@ class App extends Component {
         headerText = "Save Activity";
         break;
       case constants.activities.LOAD:
-        loadedActivity = (<LoadActivity addMessage={this.addMessage} />);
+        loadedActivity = (<LoadActivity addMessage={this.addMessage} id={this.state.id} />);
         headerText = "Load Activity";
         break;
     }
@@ -74,7 +88,7 @@ class App extends Component {
   }
   
   changeActivity(newActivity) {
-    this.setState({ currentActivity: newActivity });
+    this.setState({ currentActivity: newActivity, id: null });
   }
 }
 

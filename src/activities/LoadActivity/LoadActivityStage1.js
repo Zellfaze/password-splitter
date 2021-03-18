@@ -10,11 +10,16 @@ class LoadActivityStage1 extends Component {
     super(props);
     
     this.state = {
-      id: ""
+      id: String(this.props.id)
     };
     
     this.setID = this.setID.bind(this);
     this.advanceSection = this.advanceSection.bind(this);
+    
+    // If we were given an ID, let's go ahead and try it
+    if (this.props.id !== null) {
+      this.advanceSection();
+    }
   }
   
   advanceSection() {

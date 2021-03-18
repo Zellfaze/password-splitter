@@ -4,7 +4,8 @@ import NextButton from './NextButton.js';
 class ActivityStage extends Component {
   render() {
     let button = null;
-    if (this.props.advanceSection !== null) {
+    
+    if (typeof this.props.advanceSection !== 'undefined') {
       button = (<NextButton onClick={this.props.advanceSection}/>);
     }
     
