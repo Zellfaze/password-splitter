@@ -11,6 +11,7 @@ const dkLen = 32;
 var CryptoFunctions = {
   generateBlob: generateBlob,
   decryptBlob: decryptBlob,
+  validateBlob: validateBlob,
   extractMetadataFromBlob: extractMetadataFromBlob,
   generateShares: generateShares,
   recombineShares: recombineShares,
@@ -120,6 +121,112 @@ function decryptBlob(blob, credentials) {
       reject(err);
     });
   });
+}
+
+function validateBlob(blob) {
+  // Parse the blob into an object
+  let parsedBlob;
+  try {
+    parsedBlob = JSON.parse(blob);
+  } catch (err) {
+    return false;
+  }
+  
+  //Make sure it has requiredMembers and it's at least 2
+  if (!((parsedBlob.hasOwnProperty("requiredMembers")) && (parsedBlob.requiredMembers >= 2))) {
+    return false;
+  }
+  
+  //Make sure it has groupSize and it's at least as big as requiredMembers
+  if (!((parsedBlob.hasOwnProperty("groupSize")) && (parsedBlob.groupSize >= parsedBlob.requiredMembers))) {
+    return false;
+  }
+  
+  //Make sure it has a data property, that it is an array, and that it has as many elements as groupSize
+  if (!((parsedBlob.hasOwnProperty("data")) && (Array.isArray(parsedBlob.data)) && (parsedBlob.data.length === parsedBlob.groupSize))) {
+    return false;
+  }
+  
+  //Check each encrypted share
+  //TODO: Swap this forEach with a reduce
+  let allGood = true;
+  let foundUsers = [];
+  parsedBlob.data.forEach( (currentShare) => {
+    // Make sure that there is an ID property
+    if (!currentShare.hasOwnProperty('id')) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure that there is a username property
+    if (!currentShare.hasOwnProperty('username')) {
+      allGood = false;
+      return;
+    }
+    
+    //Check if we have seen this username already
+    if (foundUsers.findIndex( (element) => {return element === currentShare.username}) !== -1) {
+      allGood = false;
+      return;
+    }
+    
+    //We haven't seen this username already, add it to the list
+    foundUsers.push(currentShare.username);
+    
+    // Make sure there is an encryptedShare property
+    if (!currentShare.hasOwnProperty('encryptedShare')) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure there is an encryptedShare.id property
+    if (!currentShare.encryptedShare.hasOwnProperty('id')) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure there is an encryptedShare.bits property and it's set to 8
+    if (!((currentShare.encryptedShare.hasOwnProperty('bits')) && (currentShare.encryptedShare.bits === 8))) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure there is an encryptedShare.encryptedShare property
+    if (!currentShare.encryptedShare.hasOwnProperty('encryptedShare')) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure there is an encryptedShare.salt property
+    if (!currentShare.encryptedShare.hasOwnProperty('salt')) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure there is an encryptedShare.iv property
+    if (!currentShare.encryptedShare.hasOwnProperty('iv')) {
+      allGood = false;
+      return;
+    }
+    
+    // Make sure that ID matches between id and encryptedShare.id
+    if (currentShare.id !== currentShare.encryptedShare.id) {
+      allGood = false;
+      return;
+    }
+    
+    //TODO: Validate the following:
+    //  encryptedShare, salt, and iv should all be hex strings
+  });
+  
+  // Part of the above validation failed
+  if (allGood === false) {
+    return false;
+  }
+  
+  
+  // All the checks passed!
+  return true;
 }
 
 // Returns a Promise for a metadata object about the blob
