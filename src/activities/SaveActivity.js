@@ -50,7 +50,7 @@ class SaveActivity extends Component {
         cipherText: blob
       });
     }).catch( (err) => {
-      console.log(err);
+      this.props.addMessage(err, "danger");
     });
   }
   

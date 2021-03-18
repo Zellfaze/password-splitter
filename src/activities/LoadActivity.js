@@ -36,8 +36,7 @@ class LoadActivity extends Component {
         stagenumber: this.state.stagenumber+1
       });
     }).catch( (err) => {
-      //TODO: Proper error handling here
-      console.log(err);
+      this.props.addMessage(err, "danger");
     });
   }
   
@@ -48,8 +47,7 @@ class LoadActivity extends Component {
         stagenumber: this.state.stagenumber+1
       });
     }).catch( (err) => {
-      //TODO: Proper error handling here
-      console.log(err);
+      this.props.addMessage(err, "danger");
     });
   }
   
