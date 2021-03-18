@@ -26,14 +26,10 @@ class SaveActivity extends Component {
       groupSize: 2,
       requiredMembers: 2,
       cipherText: "",
-      credentials: [],
       shareList: []
     };
     
     this.plaintext = "";
-    
-    this.state.credentials.push(Object.assign({}, emptyShareObject));
-    this.state.credentials.push(Object.assign({}, emptyShareObject));
     
     this.generateCipherText = this.generateCipherText.bind(this);
     this.advanceSection = this.advanceSection.bind(this);
@@ -42,9 +38,9 @@ class SaveActivity extends Component {
     this.advanceSection3 = this.advanceSection3.bind(this);
   }
   
-  //TODO: Have this show a proper error instead of just logging the console
   generateCipherText(plaintext, groupSize, requiredMembers, credentials) {
     CryptoFunctions.generateBlob(plaintext, groupSize, requiredMembers, credentials).then( (blob) => {
+      
       this.setState({
         stagenumber: this.state.stagenumber+1,
         cipherText: blob
@@ -74,9 +70,6 @@ class SaveActivity extends Component {
   }
   
   advanceSection3(credentialsArray) {
-    this.setState({
-      credentials: credentialsArray
-    });
     this.generateCipherText(this.plaintext, this.state.groupSize, this.state.requiredMembers, credentialsArray);
   }
   
