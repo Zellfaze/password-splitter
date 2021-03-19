@@ -90,5 +90,21 @@
   "usercredentialblock-title": {
     "defaultMessage": "User Credentials",
     "description": "Title shown for block where username/password combos are entered"
+  },
+  "xofnblock-instructions": {
+    "defaultMessage": "In this section set the group size and other parameters.",
+    "description": "Instructions shown above where the size of the group and number of required members is input"
+  },
+  "xofnblock-label-groupsize": {
+    "defaultMessage": "Group Size",
+    "description": "Label shown next to group size field"
+  },
+  "xofnblock-label-requiredmembers": {
+    "defaultMessage": "Required Members",
+    "description": "Label shown next to group size field"
+  },
+  "xofnblock-title": {
+    "defaultMessage": "Group Size",
+    "description": "Title shown for block where the size of the group and number of required members is provided"
   }
 }

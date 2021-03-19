@@ -29,19 +29,46 @@ class XofNBlock extends Component {
     } = this.props;
     
     return (
-      <ContentBlock title="Group Size" body={
-        <Fragment>
-          <p className="card-text">In this section set the group size and other parameters.</p>
-          <div className="mb-2">
-            <label htmlFor="groupSize" className="form-label">Group Size</label>
-            <input type="number" className="form-control" id="groupSize" value={groupSize} onChange={this.onGroupSizeChange} />
-          </div>
-          <div className="mb-2">
-            <label htmlFor="requiredMembers" className="form-label">Required Members</label>
-            <input type="number" className="form-control" id="requiredMembers" value={requiredMembers} onChange={this.onRequiredMembersChange} />
-          </div>
-        </Fragment>
-      } />
+      <ContentBlock
+        title={
+          <FormattedMessage
+            id="xofnblock-title"
+            defaultMessage="Group Size"
+            description="Title shown for block where the size of the group and number of required members is provided"
+          />
+        }
+        body={
+          <Fragment>
+            <p className="card-text">
+              <FormattedMessage
+                id="xofnblock-instructions"
+                defaultMessage="In this section set the group size and other parameters."
+                description="Instructions shown above where the size of the group and number of required members is input"
+              />
+            </p>
+            <div className="mb-2">
+              <label htmlFor="groupSize" className="form-label">
+                <FormattedMessage
+                  id="xofnblock-label-groupsize"
+                  defaultMessage="Group Size"
+                  description="Label shown next to group size field"
+                />
+              </label>
+              <input type="number" className="form-control" id="groupSize" value={groupSize} onChange={this.onGroupSizeChange} />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="requiredMembers" className="form-label">
+                <FormattedMessage
+                  id="xofnblock-label-requiredmembers"
+                  defaultMessage="Required Members"
+                  description="Label shown next to group size field"
+                />
+              </label>
+              <input type="number" className="form-control" id="requiredMembers" value={requiredMembers} onChange={this.onRequiredMembersChange} />
+            </div>
+          </Fragment>
+        }
+      />
     );
   }
 }
