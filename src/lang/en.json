@@ -1,0 +1,94 @@
+{
+  "ciphertextblock-instructions": {
+    "defaultMessage": "Below is the encrypted blob. Please save for your reference.",
+    "description": "Instructions show next to outputted encrypted blob"
+  },
+  "ciphertextblock-label": {
+    "defaultMessage": "Ciphertext",
+    "description": "Label shown directly above outputted encrypted blob"
+  },
+  "ciphertextblock-title": {
+    "defaultMessage": "Ciphertext",
+    "description": "Title for block containing outputted encrypted blob"
+  },
+  "discovereddatablock-list": {
+    "defaultMessage": "Found Users:",
+    "description": "Text shown directly above list of users found in encrypted blob"
+  },
+  "discovereddatablock-title": {
+    "defaultMessage": "Found Users",
+    "description": "Title shown for block containing list of all users found in an encrypted blob"
+  },
+  "header-load": {
+    "defaultMessage": "Load Activity",
+    "description": "Title text in header when Load Activity is active"
+  },
+  "header-main": {
+    "defaultMessage": "Password Splitter",
+    "description": "Title text in header when no activity has been selected"
+  },
+  "header-save": {
+    "defaultMessage": "Save Activity",
+    "description": "Title text in header when Save Activity is active"
+  },
+  "keyinputblock-label": {
+    "defaultMessage": "ID Number",
+    "description": "Label shown directly above blob ID number input field"
+  },
+  "keyinputblock-title": {
+    "defaultMessage": "ID Number",
+    "description": "Title shown for block that prompts user for the blob ID"
+  },
+  "loadactivity-instructions": {
+    "defaultMessage": "Please fill out the following and then press Next.",
+    "description": "Load activity instructions for the top of the screen"
+  },
+  "messagebox-close": {
+    "defaultMessage": "Close",
+    "description": "This message is read by screen-readers when they are focused on the close button of error messages"
+  },
+  "nextbutton-button": {
+    "defaultMessage": "Next",
+    "description": "Text shown on the next section button"
+  },
+  "nextbutton-title": {
+    "defaultMessage": "Next Section",
+    "description": "Title shown for block with button to advance to next section of the activity"
+  },
+  "saveactivity-input-label": {
+    "defaultMessage": "Text to encrypt",
+    "description": "Label shown for the input field that user enters plaintext into"
+  },
+  "saveactivity-input-title": {
+    "defaultMessage": "Text to encrypt",
+    "description": "Title shown for block that user enters plaintext into"
+  },
+  "saveactivity-instructions": {
+    "defaultMessage": "Please fill out the following and then press Next.",
+    "description": "Save activity instructions for the top of the screen"
+  },
+  "saveactivity-success-instructions": {
+    "defaultMessage": "Please save the following link for your records:",
+    "description": "Instructions shown right before the final link"
+  },
+  "saveactivity-success-title": {
+    "defaultMessage": "Success!",
+    "description": "Title for block that is shown after user's encrypted blob is saved to server"
+  },
+  "usercredentialblock-instructions": {
+    "defaultMessage": "Enter the username and password here",
+    "description": "Instructions show above username/password fields"
+  },
+  "usercredentialblock-label-password": {
+    "defaultMessage": "Password",
+    "description": "Label shown next to password field"
+  },
+  "usercredentialblock-label-username": {
+    "defaultMessage": "Username",
+    "description": "Label shown next to username field"
+  },
+  "usercredentialblock-title": {
+    "defaultMessage": "User Credentials",
+    "description": "Title shown for block where username/password combos are entered"
+  }
+}

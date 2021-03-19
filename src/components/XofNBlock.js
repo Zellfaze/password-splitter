@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import {FormattedMessage} from 'react-intl';
 import ContentBlock from './ContentBlock.js';
 
 class XofNBlock extends Component {

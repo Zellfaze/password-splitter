@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import {FormattedMessage} from 'react-intl';
 import ContentBlock from './ContentBlock.js';
 
 class UserCredentialBlock extends Component {
@@ -19,15 +20,42 @@ class UserCredentialBlock extends Component {
   
   render() {
     return (
-      <ContentBlock title="User Credentials" body={
-        <Fragment>
-          <p className="card-text">Enter the username and password here</p>
-          <label htmlFor={`username${this.props.id}`} className="form-label">Username</label>
-          <input type="text" className="form-control" id={`username${this.props.id}`} value={this.props.username} onChange={this.onUsernameChange} />
-          <label htmlFor={`password${this.props.id}`} className="form-label">Password</label>
-          <input type="password" className="form-control" id={`password${this.props.id}`} value={this.props.password} onChange={this.onPasswordChange} />
-        </Fragment>
-      } />
+      <ContentBlock
+        title={
+          <FormattedMessage
+            id="usercredentialblock-title"
+            defaultMessage="User Credentials"
+            description="Title shown for block where username/password combos are entered"
+          />
+        }
+        body={
+          <Fragment>
+            <p className="card-text">
+              <FormattedMessage
+                id="usercredentialblock-instructions"
+                defaultMessage="Enter the username and password here"
+                description="Instructions show above username/password fields"
+              />
+            </p>
+            <label htmlFor={`username${this.props.id}`} className="form-label">
+              <FormattedMessage
+                id="usercredentialblock-label-username"
+                defaultMessage="Username"
+                description="Label shown next to username field"
+              />
+            </label>
+            <input type="text" className="form-control" id={`username${this.props.id}`} value={this.props.username} onChange={this.onUsernameChange} />
+            <label htmlFor={`password${this.props.id}`} className="form-label">
+              <FormattedMessage
+                id="usercredentialblock-label-password"
+                defaultMessage="Password"
+                description="Label shown next to password field"
+              />
+            </label>
+            <input type="password" className="form-control" id={`password${this.props.id}`} value={this.props.password} onChange={this.onPasswordChange} />
+          </Fragment>
+        }
+      />
     );
   }
 } 

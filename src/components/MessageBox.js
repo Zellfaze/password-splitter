@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {FormattedMessage} from 'react-intl';
 
 //Props
 //  {
@@ -36,10 +37,18 @@ class MessageBox extends Component {
     }
     
     let classes = `alert alert-dismissible alert-${this.props.level}`;
+    const close = (
+      <FormattedMessage
+        id="messagebox-close"
+        defaultMessage="Close"
+        description="This message is read by screen-readers when they are focused on the close button of error messages"
+      />
+    );
+    
     return (
       <div className={classes}>
         {message}
-        <button type="button" className="btn-close" aria-label="Close" onClick={this.remove} />
+        <button type="button" className="btn-close" aria-label={close} onClick={this.remove} />
       </div>
     );
   }

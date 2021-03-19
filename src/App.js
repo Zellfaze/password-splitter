@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import constants from './constants.js';
+import i18nEnUs from './lang/en.json';
+import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
 
 // Activities
 import HomeActivity from './activities/HomeActivity.js';
@@ -11,6 +13,10 @@ import HeaderBlock from './components/HeaderBlock.js';
 import ErrorBlock from './components/ErrorBlock.js';
 
 const validParamSize = 16;
+
+const i18nMessages = {
+  en: i18nEnUs
+};
 
 class App extends Component {
   constructor(props) {
@@ -66,24 +72,26 @@ class App extends Component {
       default:
       case constants.activities.HOME:
         loadedActivity = (<HomeActivity changeActivity={this.changeActivity} addMessage={this.addMessage}/>);
-        headerText = "Password Splitter";
+        headerText = (<FormattedMessage id="header-main" defaultMessage="Password Splitter" description="Title text in header when no activity has been selected"/>);
         break;
       case constants.activities.SAVE:
         loadedActivity = (<SaveActivity addMessage={this.addMessage} />);
-        headerText = "Save Activity";
+        headerText = (<FormattedMessage id="header-save" defaultMessage="Save Activity" description="Title text in header when Save Activity is active"/>);
         break;
       case constants.activities.LOAD:
         loadedActivity = (<LoadActivity addMessage={this.addMessage} id={this.state.id} />);
-        headerText = "Load Activity";
+        headerText = (<FormattedMessage id="header-load" defaultMessage="Load Activity" description="Title text in header when Load Activity is active"/>);
         break;
     }
     
     return (
-      <div>
-        <HeaderBlock headerText={headerText} changeActivity={this.changeActivity}/>
-        <ErrorBlock messages={this.state.messages} removeMessage={this.removeMessage}/>
-        {loadedActivity}
-      </div>
+      <IntlProvider messages={i18nMessages.en} locale="en" defaultLocale="en">
+        <div>
+          <HeaderBlock headerText={headerText} changeActivity={this.changeActivity}/>
+          <ErrorBlock messages={this.state.messages} removeMessage={this.removeMessage}/>
+          {loadedActivity}
+        </div>
+      </IntlProvider>
     );
   }
   

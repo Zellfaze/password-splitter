@@ -30,9 +30,6 @@ class InputBlock extends Component {
 
 InputBlock.defaultProps = {
   rows: 3,
-  instructionsText: "Instructions",
-  label: "Input Text",
-  title: "Input Block"
 }
 
 export default InputBlock;
