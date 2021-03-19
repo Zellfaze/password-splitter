@@ -13,11 +13,6 @@ class MessageBox extends Component {
   constructor(props) {
     super(props);
     this.timerID = null;
-    this.remove = this.remove.bind(this);
-  }
-  
-  remove() {
-    this.props.removeMessage(this.props.id);
   }
   
   componentDidMount() {
@@ -31,12 +26,20 @@ class MessageBox extends Component {
   }
   
   render() {
-    let message = this.props.message;
-    if (typeof this.props.message === "object") {
-      message = this.props.message.message;
+    const {
+      message,
+      level,
+      id,
+      removeMessage
+    } = this.props;
+    
+    // If this is an error object instead of a raw string, extract the message
+    let displayedMessage = message;
+    if (typeof message === "object") {
+      displayedMessage = message.message;
     }
     
-    let classes = `alert alert-dismissible alert-${this.props.level}`;
+    let classes = `alert alert-dismissible alert-${level}`;
     const close = (
       <FormattedMessage
         id="messagebox-close"
@@ -48,7 +51,7 @@ class MessageBox extends Component {
     return (
       <div className={classes}>
         {message}
-        <button type="button" className="btn-close" aria-label={close} onClick={this.remove} />
+        <button type="button" className="btn-close" aria-label={close} onClick={() => {removeMessage(id);}} />
       </div>
     );
   }

@@ -6,10 +6,6 @@ class KeyInputBlock extends Component {
   constructor(props) {
     super(props);
     
-    this.state = {
-      keyID: ""
-    }
-    
     this.onChange = this.onChange.bind(this);
   }
   
@@ -18,6 +14,10 @@ class KeyInputBlock extends Component {
   }
   
   render() {
+    const {
+      keyID
+    } = this.props
+
     return (
       <ContentBlock
         title={
@@ -36,7 +36,7 @@ class KeyInputBlock extends Component {
                 description="Label shown directly above blob ID number input field"
               />
             </label>
-            <input id="KeyInputBlock" className="form-control" type="text" value={this.props.keyID} onChange={this.onChange}/>
+            <input id="KeyInputBlock" className="form-control" type="text" value={keyID} onChange={this.onChange}/>
           </Fragment>
         }
       />

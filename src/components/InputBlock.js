@@ -14,14 +14,22 @@ class InputBlock extends Component {
   }
   
   render() {
+    const {
+      title,
+      instructionsText,
+      label,
+      rows,
+      text
+    } = this.props;
+    
     let htmlID = `inputBlock-${this.state.formID}`;
     
     return (
-      <ContentBlock title={this.props.title} body={
+      <ContentBlock title={title} body={
         <Fragment>
-          <p className="card-text">{this.props.instructionsText}</p>
-          <label htmlFor={htmlID} className="form-label">{this.props.label}</label>
-          <textarea className="form-control" id={htmlID} rows={this.props.rows}  value={this.props.text} onChange={this.onFormChange} />
+          <p className="card-text">{instructionsText}</p>
+          <label htmlFor={htmlID} className="form-label">{label}</label>
+          <textarea className="form-control" id={htmlID} rows={rows}  value={text} onChange={this.onFormChange} />
         </Fragment>
       } />
     );

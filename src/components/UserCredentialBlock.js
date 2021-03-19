@@ -19,6 +19,12 @@ class UserCredentialBlock extends Component {
   }
   
   render() {
+    const {
+      id,
+      username,
+      password
+    } = this.props;
+    
     return (
       <ContentBlock
         title={
@@ -37,22 +43,22 @@ class UserCredentialBlock extends Component {
                 description="Instructions show above username/password fields"
               />
             </p>
-            <label htmlFor={`username${this.props.id}`} className="form-label">
+            <label htmlFor={`username${id}`} className="form-label">
               <FormattedMessage
                 id="usercredentialblock-label-username"
                 defaultMessage="Username"
                 description="Label shown next to username field"
               />
             </label>
-            <input type="text" className="form-control" id={`username${this.props.id}`} value={this.props.username} onChange={this.onUsernameChange} />
-            <label htmlFor={`password${this.props.id}`} className="form-label">
+            <input type="text" className="form-control" id={`username${id}`} value={username} onChange={this.onUsernameChange} />
+            <label htmlFor={`password${id}`} className="form-label">
               <FormattedMessage
                 id="usercredentialblock-label-password"
                 defaultMessage="Password"
                 description="Label shown next to password field"
               />
             </label>
-            <input type="password" className="form-control" id={`password${this.props.id}`} value={this.props.password} onChange={this.onPasswordChange} />
+            <input type="password" className="form-control" id={`password${id}`} value={password} onChange={this.onPasswordChange} />
           </Fragment>
         }
       />

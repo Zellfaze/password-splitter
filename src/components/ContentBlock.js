@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 
-class ContentBlock extends Component {
-  render() {
-    return (
-      <div className="card text-dark bg-light mb-2">
-        <div className="card-header">
-          {this.props.title}
-        </div>
-        <div className="card-body">
-          {this.props.body}
-        </div>
+export default function ContentBlocK({title, body}) {
+  return (
+    <div className="card text-dark bg-light mb-2">
+      <div className="card-header">
+        {title}
       </div>
-    );
-  }
-} 
-
-export default ContentBlock;
+      <div className="card-body">
+        {body}
+      </div>
+    </div>
+  );
+}
