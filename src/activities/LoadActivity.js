@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoadActivityStage1 from './LoadActivity/LoadActivityStage1.js';
 import LoadActivityStage2 from './LoadActivity/LoadActivityStage2.js';
 import LoadActivityStage3 from './LoadActivity/LoadActivityStage3.js';
-import CryptoFunctions from '../crypto.js';
+import CryptoFunctions from '../lib/crypto.js';
 
 const stages = {
   CIPHERTEXT: 0,

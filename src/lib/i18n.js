@@ -1,6 +1,6 @@
 import bcp47match from 'bcp-47-match';
 import bcp47normalize from 'bcp-47-normalize';
-import i18nEnUs from './compiled-lang/en.json';
+import i18nEnUs from '../compiled-lang/en.json';
 
 const i18nMessages = {
   en: i18nEnUs

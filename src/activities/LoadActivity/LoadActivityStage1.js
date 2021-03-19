@@ -3,7 +3,7 @@ import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
 import KeyInputBlock from '../../components/KeyInputBlock.js';
 import Jquery from 'jquery';
-import CryptoFunctions from '../../crypto.js';
+import CryptoFunctions from '../../lib/crypto.js';
 
 class LoadActivityStage1 extends Component {
   constructor(props) {

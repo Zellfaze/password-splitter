@@ -3,7 +3,7 @@ import SaveActivityStage1 from './SaveActivity/SaveActivityStage1.js';
 import SaveActivityStage2 from './SaveActivity/SaveActivityStage2.js';
 import SaveActivityStage3 from './SaveActivity/SaveActivityStage3.js';
 import SaveActivityStage4 from './SaveActivity/SaveActivityStage4.js';
-import CryptoFunctions from '../crypto.js';
+import CryptoFunctions from '../lib/crypto.js';
 import Jquery from 'jquery';
 
 

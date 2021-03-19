@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import constants from './constants.js';
+import constants from './lib/constants.js';
 
 // I18n
 import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
-import I18nMessages from './i18n.js';
+import I18nMessages from './lib/i18n.js';
 
 // Activities
 import HomeActivity from './activities/HomeActivity.js';

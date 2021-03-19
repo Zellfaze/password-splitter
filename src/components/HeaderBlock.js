@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import constants from '../constants.js';
+import constants from '../lib/constants.js';
 import logo from './logo.svg';
 import './HeaderBlock.css';
 

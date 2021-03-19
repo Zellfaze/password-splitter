@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import constants from '../constants.js';
+import constants from '../lib/constants.js';
 
 class HomeActivity extends Component {
   constructor(props) {
