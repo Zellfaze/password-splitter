@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "bcp-47-match": "^1.0.3",
+    "bcp-47-normalize": "^1.1.1",
     "jquery": "^3.6.0",
     "js-crypto-aes": "^1.0.2",
     "react": "^17.0.1",
@@ -22,13 +24,35 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "extract": "formatjs extract",
-    "easy-extract": "formatjs extract 'src/**/*.js*' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'"
+    "compile": "formatjs compile",
+    "easy-extract": "formatjs extract 'src/**/*.js*' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "easy-compile": "formatjs compile lang/en.json --ast --out-file src/compiled-lang/en.json"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "plugins": [
+      "formatjs"
+    ],
+    "rules": {
+      "formatjs/no-offset": "error",
+      "formatjs/enforce-description": [
+        "error",
+        "literal"
+      ],
+      "formatjs/enforce-default-message": [
+        "error",
+        "literal"
+      ],
+      "formatjs/enforce-placeholders": [
+        "error",
+        {
+          "ignoreList": []
+        }
+      ],
+      "formatjs/no-camel-case": "error",
+      "formatjs/no-multiple-whitespaces": "error",
+      "formatjs/no-multiple-plurals": "error",
+      "formatjs/enforce-id": "error"
+    }
   },
   "browserslist": {
     "production": [
@@ -46,18 +70,5 @@
     "@formatjs/cli": "^3.2.0",
     "babel-plugin-formatjs": "^9.2.5",
     "eslint-plugin-formatjs": "^2.12.8"
-  },
-  "eslintConfig": {
-    "plugins": ["formatjs"],
-    "rules": {
-       "formatjs/no-offset": "error",
-       "formatjs/enforce-description": ["error", "literal"],
-       "formatjs/enforce-default-message": ["error", "literal"],
-       "formatjs/enforce-placeholders": ["error", {"ignoreList": []}],
-       "formatjs/no-camel-case": "error",
-       "formatjs/no-multiple-whitespaces": "error",
-       "formatjs/no-multiple-plurals": "error",
-       "formatjs/enforce-id": "error"
-    }
   }
 }

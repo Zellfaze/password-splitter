@@ -11,3 +11,8 @@ to:
 ```js
 return (root.secrets = factory(window.crypto))
 ```
+
+Lastly compile the localizations:
+```bash
+npm run easy-compile
+```

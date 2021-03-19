@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import constants from './constants.js';
-import i18nEnUs from './lang/en.json';
+
+// I18n
 import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
+import I18nMessages from './i18n.js';
 
 // Activities
 import HomeActivity from './activities/HomeActivity.js';
@@ -13,10 +15,6 @@ import HeaderBlock from './components/HeaderBlock.js';
 import ErrorBlock from './components/ErrorBlock.js';
 
 const validParamSize = 16;
-
-const i18nMessages = {
-  en: i18nEnUs
-};
 
 class App extends Component {
   constructor(props) {
@@ -32,10 +30,15 @@ class App extends Component {
       initActivity = constants.activities.LOAD;
     }
     
+    // Determine browser locale and get matching l10n
+    let i18nMessages = I18nMessages(navigator.languages);
+    
     this.state = {
       currentActivity: initActivity,
       messages: [],
-      id: initID
+      id: initID,
+      language: i18nMessages.bestLanguage,
+      l10n: i18nMessages.messages
     };
     
     this.changeActivity = this.changeActivity.bind(this);
@@ -85,7 +88,7 @@ class App extends Component {
     }
     
     return (
-      <IntlProvider messages={i18nMessages.en} locale="en" defaultLocale="en">
+      <IntlProvider messages={this.state.l10n} locale={this.state.language} defaultLocale="en">
         <div>
           <HeaderBlock headerText={headerText} changeActivity={this.changeActivity}/>
           <ErrorBlock messages={this.state.messages} removeMessage={this.removeMessage}/>
