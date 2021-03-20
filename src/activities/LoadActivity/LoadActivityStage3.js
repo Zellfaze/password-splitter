@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
-import CipherTextBlock from '../../components/CipherTextBlock.js';
+import CipherTextBlock from '../../components/contentblocks/CipherTextBlock.js';
 
 class LoadActivityStage3 extends Component {
   render() {

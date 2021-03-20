@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
-import XofNBlock from '../../components/XofNBlock.js';
+import XofNBlock from '../../components/contentblocks/XofNBlock.js';
 
 class SaveActivityStage2 extends Component {
   constructor(props) {

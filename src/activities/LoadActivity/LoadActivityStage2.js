@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
-import UserCredentialBlock from '../../components/UserCredentialBlock.js';
-import DiscoveredDataBlock from '../../components/DiscoveredDataBlock.js';
+import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
+import DiscoveredDataBlock from '../../components/contentblocks/DiscoveredDataBlock.js';
 
 class LoadActivityStage3 extends Component {
   constructor(props) {

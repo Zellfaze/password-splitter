@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import ContentBlock from './ContentBlock.js';
+import ContentBlock from '../ContentBlock.js';
 
 class InputBlock extends Component {
   constructor(props) {

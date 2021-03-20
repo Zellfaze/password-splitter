@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NextButton from './NextButton.js';
+import NextButton from './widgets/NextButton.js';
 
 export default function ActivityStage({advanceSection, instructions, components}) {
   let button = null;

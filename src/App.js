@@ -11,8 +11,8 @@ import SaveActivity from './activities/SaveActivity.js';
 import LoadActivity from './activities/LoadActivity.js';
 
 //Components
-import HeaderBlock from './components/HeaderBlock.js';
-import ErrorBlock from './components/ErrorBlock.js';
+import HeaderBlock from './components/header/HeaderBlock.js';
+import ErrorBlock from './components/messages/ErrorBlock.js';
 
 const validParamSize = 16;
 

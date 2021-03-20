@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {FormattedMessage} from 'react-intl';
-import ContentBlock from './ContentBlock.js';
+import ContentBlock from '../ContentBlock.js';
 
 export default function NextButton({onClick}) {
   return (

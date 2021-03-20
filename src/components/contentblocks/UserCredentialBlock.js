@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {FormattedMessage} from 'react-intl';
-import ContentBlock from './ContentBlock.js';
+import ContentBlock from '../ContentBlock.js';
 
 class UserCredentialBlock extends Component {
   constructor(props) {

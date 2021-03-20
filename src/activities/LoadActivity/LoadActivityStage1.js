@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
-import KeyInputBlock from '../../components/KeyInputBlock.js';
+import KeyInputBlock from '../../components/contentblocks/KeyInputBlock.js';
 import Jquery from 'jquery';
 import CryptoFunctions from '../../lib/crypto.js';
 

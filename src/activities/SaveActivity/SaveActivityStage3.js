@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
-import UserCredentialBlock from '../../components/UserCredentialBlock.js';
+import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
 
 class SaveActivityStage3 extends Component {
   constructor(props) {
