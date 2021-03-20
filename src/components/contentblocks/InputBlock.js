@@ -1,16 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import ContentBlock from '../ContentBlock.js';
+import TextAreaInput from '../widgets/TextAreaInput.js';
 
 class InputBlock extends Component {
   constructor(props) {
     super(props);
     
-    this.onFormChange = this.onFormChange.bind(this);
     this.state = {formID: Math.floor(Math.random() * Math.floor(100))};
-  }
-  
-  onFormChange(event) {
-    this.props.setText(event.target.value);
   }
   
   render() {
@@ -29,7 +25,7 @@ class InputBlock extends Component {
         <Fragment>
           <p className="card-text">{instructionsText}</p>
           <label htmlFor={htmlID} className="form-label">{label}</label>
-          <textarea className="form-control" id={htmlID} rows={rows}  value={text} onChange={this.onFormChange} />
+          <TextAreaInput id={htmlID} rows={rows} value={text} onChange={this.props.setText} />
         </Fragment>
       } />
     );
