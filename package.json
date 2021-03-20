@@ -69,6 +69,7 @@
   "devDependencies": {
     "@formatjs/cli": "^3.2.0",
     "babel-plugin-formatjs": "^9.2.5",
-    "eslint-plugin-formatjs": "^2.12.8"
+    "eslint-plugin-formatjs": "^2.12.8",
+    "react-test-renderer": "^17.0.1"
   }
 }

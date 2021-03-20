@@ -8,7 +8,7 @@ const i18nMessages = {
 
 class I18nMessages {
   constructor(clientLanguages) {
-    // Get all the languages we have
+    // Get all the languages we have in a normalized list
     let availableLanguages = this.getMessagesList();
     
     // Find the best match to the browser

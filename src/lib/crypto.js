@@ -8,7 +8,7 @@ const blockSize = 8;
 const parallelCost = 1;
 const dkLen = 32;
 
-var CryptoFunctions = {
+const CryptoFunctions = {
   generateBlob: generateBlob,
   decryptBlob: decryptBlob,
   validateBlob: validateBlob,
@@ -17,6 +17,17 @@ var CryptoFunctions = {
   recombineShares: recombineShares,
   encryptShare: encryptShare,
   decryptShare: decryptShare
+}
+
+export const CryptoFunctionsTestables = {
+  hashPassword: hashPassword,
+  aesEncrypt: aesEncrypt,
+  aesDecrypt: aesDecrypt,
+  generateIV: generateIV,
+  generateSalt: generateSalt,
+  normalStringtoUint8Array: normalStringtoUint8Array,
+  uint8ArraytoHexString: uint8ArraytoHexString,
+  hexStringtoUint8Array: hexStringtoUint8Array
 }
 
 export default CryptoFunctions;
@@ -365,9 +376,18 @@ function hashPassword(password, salt = null, saltHex = false) {
     salt = uint8ArraytoHexString(saltArray);
   } else {
     if (saltHex) {
+      // Test to make sure that the salt really is hex
+      if (!/^[0-9a-fA-F]+$/i.test(salt)) {
+        return Promise.reject(Error("Salt is not valid hex!"));
+      }
+      
       saltArray = hexStringtoUint8Array(salt);
     } else {
+      // Convert the salt to an Uint8Array
       saltArray = normalStringtoUint8Array(salt);
+      
+      // Convert that array back to a hex salt
+      salt = uint8ArraytoHexString(saltArray);
     }
   }
   
