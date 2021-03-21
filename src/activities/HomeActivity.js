@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import constants from '../lib/constants.js';
+import PropTypes from 'prop-types';
 
 class HomeActivity extends Component {
   constructor(props) {
@@ -18,10 +19,11 @@ class HomeActivity extends Component {
   }
   
   render() {
+    //TODO: Translate strings on these AutoColButtonComponents
     return (
       <div className="container-fluid mt-2">
         <div className="row justify-content-center">
-          <AutoColButtonComponent type="primary" onClick={this.onClickSave} text="Save" />
+          <AutoColButtonComponent type="primary" onClick={this.onClickSave} text="Save" /> 
           <AutoColButtonComponent type="secondary" onClick={this.onClickLoad} text="Load" />
         </div>
       </div>
@@ -29,6 +31,9 @@ class HomeActivity extends Component {
   }
 }
 
+HomeActivity.propTypes = {
+  changeActivity: PropTypes.func.isRequired
+};
 
 class AutoColButtonComponent extends Component {
   render() {
@@ -40,6 +45,13 @@ class AutoColButtonComponent extends Component {
     );
   }
 }
+
+AutoColButtonComponent.propTypes = {
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.node.isRequired
+};
+
 
 export default HomeActivity;
  

@@ -23,7 +23,7 @@ it("UserCredentialBlock component shallow renders without crashing", () => {
   const renderer = new ShallowRenderer();
   
   act(() => {
-    renderer.render(<UserCredentialBlock id={0} username="user1" password="pass1" />, container);
+    renderer.render(<UserCredentialBlock id={0} username="user1" password="pass1" setUserCredentials={stubFunction}/>, container);
   });
 });
  

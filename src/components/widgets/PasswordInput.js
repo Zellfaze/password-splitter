@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import PropTypes from 'prop-types';
 
 class PasswordInput extends Component {
   constructor(props) {
@@ -20,5 +21,11 @@ class PasswordInput extends Component {
     return (<input id={id} className="form-control" type="password" value={value} onChange={this.onChange}/>);
   }
 }
+
+PasswordInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
+};
 
 export default PasswordInput;

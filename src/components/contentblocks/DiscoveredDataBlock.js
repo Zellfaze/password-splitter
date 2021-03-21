@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
+import PropTypes from 'prop-types';
 
 const DiscoveredDataBlock = ({users}) => {
   const items = users.map( (currentUser) => {
@@ -32,8 +33,8 @@ const DiscoveredDataBlock = ({users}) => {
   );
 };
 
-DiscoveredDataBlock.defaultProps = {
-  users: []
+DiscoveredDataBlock.propTypes = {
+  users: PropTypes.array.isRequired
 }
 
 export default DiscoveredDataBlock;

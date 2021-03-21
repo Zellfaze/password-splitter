@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import XofNBlock from '../../components/contentblocks/XofNBlock.js';
+import PropTypes from 'prop-types';
 
 class SaveActivityStage2 extends Component {
   constructor(props) {
@@ -36,6 +37,10 @@ class SaveActivityStage2 extends Component {
       } instructions={<SaveText />} advanceSection={this.advanceSection} />
     );
   }
+}
+
+SaveActivityStage2.propTypes = {
+  onNextSection: PropTypes.func.isRequired,
 }
 
 export default SaveActivityStage2; 

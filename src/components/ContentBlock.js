@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default function ContentBlock({title, children}) {
+function ContentBlock({title, children}) {
   return (
     <div className="card text-dark bg-light mb-2">
       <div className="card-header">
@@ -12,3 +13,10 @@ export default function ContentBlock({title, children}) {
     </div>
   );
 }
+
+ContentBlock.propTypes = {
+  title: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
+}
+
+export default ContentBlock;

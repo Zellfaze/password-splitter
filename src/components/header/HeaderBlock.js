@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import constants from '../../lib/constants.js';
 import logo from './logo.svg';
 import './HeaderBlock.css';
+import PropTypes from 'prop-types';
 
-export default function HeaderBlock({headerText, changeActivity}) {
+function HeaderBlock({headerText, changeActivity}) {
   return (
     <div className="container-fluid">
       <div className="row header">
@@ -15,3 +16,10 @@ export default function HeaderBlock({headerText, changeActivity}) {
     </div>
   );
 }
+
+HeaderBlock.propTypes = {
+  headerText: PropTypes.node.isRequired,
+  changeActivity: PropTypes.func.isRequired
+}
+
+export default HeaderBlock;

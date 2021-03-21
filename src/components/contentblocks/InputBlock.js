@@ -3,6 +3,7 @@ import ContentBlock from '../ContentBlock.js';
 import TextAreaInput from '../widgets/TextAreaInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
+import PropTypes from 'prop-types';
 
 class InputBlock extends Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class InputBlock extends Component {
       instructionsText,
       label,
       rows,
-      text
+      text,
+      setText
     } = this.props;
     
     let htmlID = `inputBlock-${this.state.formID}`;
@@ -26,7 +28,7 @@ class InputBlock extends Component {
       <ContentBlock title={title} >
         <ContentBlockInstructions>{instructionsText}</ContentBlockInstructions>
         <InputLabel id={htmlID}>{label}</InputLabel>
-        <TextAreaInput id={htmlID} rows={rows} value={text} onChange={this.props.setText} />
+        <TextAreaInput id={htmlID} rows={rows} value={text} onChange={setText} />
       </ContentBlock>
     );
   }
@@ -34,6 +36,15 @@ class InputBlock extends Component {
 
 InputBlock.defaultProps = {
   rows: 3,
+}
+
+InputBlock.propTypes = {
+  title: PropTypes.node.isRequired,
+  instructionsText: PropTypes.node.isRequired,
+  label: PropTypes.node.isRequired,
+  rows: PropTypes.number,
+  text: PropTypes.string.isRequired,
+  setText: PropTypes.func.isRequired
 }
 
 export default InputBlock;

@@ -29,7 +29,7 @@ it("InputBlock component shallow renders without crashing", () => {
       label="Label"
       rows={3}
       text="The text"
-      changeActivity={stubFunction}
+      setText={stubFunction}
     />, container);
   });
 });

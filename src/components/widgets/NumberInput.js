@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import PropTypes from 'prop-types';
 
 class NumberInput extends Component {
   constructor(props) {
@@ -29,5 +30,13 @@ NumberInput.defaultProps = {
   maxValue: null,
   minValue: null
 }
+
+NumberInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  maxValue: PropTypes.number,
+  minValue: PropTypes.number
+};
 
 export default NumberInput;

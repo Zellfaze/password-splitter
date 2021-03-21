@@ -23,7 +23,7 @@ it("NumberInput component shallow renders without crashing", () => {
   const renderer = new ShallowRenderer();
   
   act(() => {
-    renderer.render(<NumberInput value={2} onChange={stubFunction} maxValue={255} minValue={2} />, container);
+    renderer.render(<NumberInput id="testinput" value={2} onChange={stubFunction} maxValue={255} minValue={2} />, container);
   });
 });
 

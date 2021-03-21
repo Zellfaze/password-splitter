@@ -23,7 +23,7 @@ it("ContentBlock component shallow renders without crashing", () => {
   const renderer = new ShallowRenderer();
   
   act(() => {
-    renderer.render(<ContentBlock title="Instructions" body={<div></div>}/>, container);
+    renderer.render(<ContentBlock title="Instructions">Content</ContentBlock>, container);
   });
 });
  

@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import {FormattedMessage} from 'react-intl';
-
-//Props
-//  {
-//    message,
-//    level,
-//    id,
-//    removeMessage(id)
-//  }
+import PropTypes from 'prop-types';
 
 class MessageBox extends Component {
   constructor(props) {
@@ -55,6 +48,12 @@ class MessageBox extends Component {
       </div>
     );
   }
-} 
+}
+
+MessageBox.propTypes = {
+  message: PropTypes.node.isRequired,
+  level: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
+}
 
 export default MessageBox; 

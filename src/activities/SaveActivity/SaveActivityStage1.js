@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import InputBlock from '../../components/contentblocks/InputBlock.js';
+import PropTypes from 'prop-types';
 
 class SaveActivityStage1 extends Component {
   constructor(props) {
@@ -37,6 +38,13 @@ class SaveActivityStage1 extends Component {
               description="Title shown for block that user enters plaintext into"
             />
           }
+          instructionsText={
+            <FormattedMessage
+              id="saveactivity-input-instructions"
+              defaultMessage="Please enter the text that you'd like to encrypt below"
+              description="Instructions shown above the input field that user enters plaintext into"
+            />
+          }
           setText={this.setPlaintext}
           label={
             <FormattedMessage
@@ -50,6 +58,10 @@ class SaveActivityStage1 extends Component {
       } instructions={<SaveText />} advanceSection={this.advanceSection} />
     );
   }
+}
+
+SaveActivityStage1.propTypes = {
+  onNextSection: PropTypes.func.isRequired,
 }
 
 export default SaveActivityStage1;

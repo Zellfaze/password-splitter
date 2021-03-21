@@ -4,6 +4,7 @@ import LoadText from './LoadText.js';
 import KeyInputBlock from '../../components/contentblocks/KeyInputBlock.js';
 import Jquery from 'jquery';
 import CryptoFunctions from '../../lib/crypto.js';
+import PropTypes from 'prop-types';
 
 class LoadActivityStage1 extends Component {
   constructor(props) {
@@ -50,6 +51,11 @@ class LoadActivityStage1 extends Component {
       } instructions={<LoadText />} advanceSection={this.advanceSection} />
     );
   }
+}
+
+LoadActivityStage1.propTypes = {
+  addMessage: PropTypes.func.isRequired,
+  onNextSection: PropTypes.func.isRequired
 }
 
 export default LoadActivityStage1;

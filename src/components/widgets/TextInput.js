@@ -1,4 +1,5 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TextInput extends Component {
   constructor(props) {
@@ -20,5 +21,10 @@ class TextInput extends Component {
     return (<input id={id} className="form-control" type="text" value={value} onChange={this.onChange}/>);
   }
 }
+
+TextInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
+};
 
 export default TextInput;

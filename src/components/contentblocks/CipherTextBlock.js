@@ -3,8 +3,9 @@ import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
+import PropTypes from 'prop-types';
 
-export default function CipherTextBlock({cipherText}) {
+function CipherTextBlock({cipherText}) {
   return (
     <ContentBlock
       title={
@@ -33,3 +34,9 @@ export default function CipherTextBlock({cipherText}) {
     </ContentBlock>
   );
 }
+
+CipherTextBlock.propTypes = {
+  cipherText: PropTypes.string.isRequired
+};
+
+export default CipherTextBlock;

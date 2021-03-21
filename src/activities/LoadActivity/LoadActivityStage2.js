@@ -3,8 +3,9 @@ import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
 import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
 import DiscoveredDataBlock from '../../components/contentblocks/DiscoveredDataBlock.js';
+import PropTypes from 'prop-types';
 
-class LoadActivityStage3 extends Component {
+class LoadActivityStage2 extends Component {
   constructor(props) {
     super(props);
     
@@ -62,5 +63,11 @@ class LoadActivityStage3 extends Component {
   }
 }
 
-export default LoadActivityStage3; 
+LoadActivityStage2.propTypes = {
+  groupSize: PropTypes.number.isRequired,
+  onNextSection: PropTypes.func.isRequired,
+  users: PropTypes.array.isRequired
+}
+
+export default LoadActivityStage2; 
  

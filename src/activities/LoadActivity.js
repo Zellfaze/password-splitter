@@ -3,6 +3,7 @@ import LoadActivityStage1 from './LoadActivity/LoadActivityStage1.js';
 import LoadActivityStage2 from './LoadActivity/LoadActivityStage2.js';
 import LoadActivityStage3 from './LoadActivity/LoadActivityStage3.js';
 import CryptoFunctions from '../lib/crypto.js';
+import PropTypes from 'prop-types';
 
 const stages = {
   CIPHERTEXT: 0,
@@ -69,5 +70,9 @@ class LoadActivity extends Component {
     }
   }
 }
+
+LoadActivity.propTypes = {
+  addMessage: PropTypes.func.isRequired
+};
 
 export default LoadActivity;

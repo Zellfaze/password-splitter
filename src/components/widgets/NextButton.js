@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
+import PropTypes from 'prop-types';
 
-export default function NextButton({onClick}) {
+function NextButton({onClick}) {
   return (
     <ContentBlock
       title={
@@ -25,3 +26,9 @@ export default function NextButton({onClick}) {
     </ContentBlock>
   );
 }
+
+NextButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
+
+export default NextButton;

@@ -4,8 +4,9 @@ import ContentBlock from '../ContentBlock.js';
 import NumberInput from '../widgets/NumberInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
+import PropTypes from 'prop-types';
 
-export default function XofNBlock({groupSize, requiredMembers, setGroupSize, setRequiredMembers}) {
+function XofNBlock({groupSize, requiredMembers, setGroupSize, setRequiredMembers}) {
   return (
     <ContentBlock
       title={
@@ -46,3 +47,12 @@ export default function XofNBlock({groupSize, requiredMembers, setGroupSize, set
     </ContentBlock>
   );
 }
+
+XofNBlock.propTypes = {
+  groupSize: PropTypes.number.isRequired,
+  requiredMembers: PropTypes.number.isRequired,
+  setGroupSize: PropTypes.func.isRequired,
+  setRequiredMembers: PropTypes.func.isRequired
+};
+
+export default XofNBlock;

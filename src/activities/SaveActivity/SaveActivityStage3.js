@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
+import PropTypes from 'prop-types';
 
 class SaveActivityStage3 extends Component {
   constructor(props) {
@@ -54,6 +55,11 @@ class SaveActivityStage3 extends Component {
       <ActivityStage components={credentials} instructions={<SaveText />} advanceSection={this.advanceSection} />
     );
   }
+}
+
+SaveActivityStage3.propTypes = {
+  onNextSection: PropTypes.func.isRequired,
+  groupSize: PropTypes.number.isRequired
 }
 
 export default SaveActivityStage3; 

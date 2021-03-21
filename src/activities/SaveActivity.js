@@ -5,6 +5,7 @@ import SaveActivityStage3 from './SaveActivity/SaveActivityStage3.js';
 import SaveActivityStage4 from './SaveActivity/SaveActivityStage4.js';
 import CryptoFunctions from '../lib/crypto.js';
 import Jquery from 'jquery';
+import PropTypes from 'prop-types';
 
 
 const stages = {
@@ -117,6 +118,8 @@ class SaveActivity extends Component {
   }
 }
 
+SaveActivity.propTypes = {
+  addMessage: PropTypes.func.isRequired
+};
+
 export default SaveActivity;
- 
- 

@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import MessageBox from './MessageBox.js';
+import PropTypes from 'prop-types';
 
-//Props
-//  {
-//    messages: [
-//      {message, level, id}
-//    ],
-//    removeMessage(id)
-//  }
-
-export default function ErrorBlock({messages, removeMessage}) {
+function ErrorBlock({messages, removeMessage}) {
   let messageBoxes = messages.map( (currentMessage) => {
     return <MessageBox message={currentMessage.message} level={currentMessage.level} key={currentMessage.id} id={currentMessage.id} removeMessage={removeMessage}/>
   });
@@ -19,3 +12,13 @@ export default function ErrorBlock({messages, removeMessage}) {
   );
 }
  
+ErrorBlock.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    message: PropTypes.node.isRequired,
+    level: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
+  })).isRequired,
+  removeMessage: PropTypes.func.isRequired
+}
+
+export default ErrorBlock;

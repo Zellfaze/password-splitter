@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import NextButton from './widgets/NextButton.js';
+import PropTypes from 'prop-types';
 
-export default function ActivityStage({advanceSection, instructions, components}) {
+function ActivityStage({advanceSection, instructions, components}) {
   let button = null;
   
   if (typeof advanceSection !== 'undefined') {
@@ -16,3 +17,11 @@ export default function ActivityStage({advanceSection, instructions, components}
     </div>
   );
 }
+
+ActivityStage.propTypes = {
+  advanceSection: PropTypes.func,
+  instructions: PropTypes.node.isRequired,
+  components: PropTypes.node.isRequired
+}
+
+export default ActivityStage;

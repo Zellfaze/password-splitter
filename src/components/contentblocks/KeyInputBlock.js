@@ -4,8 +4,9 @@ import ContentBlock from '../ContentBlock.js';
 import TextInput from '../widgets/TextInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
+import PropTypes from 'prop-types';
 
-export default function KeyInputBlock({keyID, onChange}) {  
+function KeyInputBlock({keyID, onChange}) {  
   return (
     <ContentBlock
       title={
@@ -34,3 +35,10 @@ export default function KeyInputBlock({keyID, onChange}) {
     </ContentBlock>
   );
 }
+
+KeyInputBlock.propTypes = {
+  keyID: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+}
+
+export default KeyInputBlock;

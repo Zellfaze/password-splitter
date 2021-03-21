@@ -5,6 +5,8 @@ import TextInput from '../widgets/TextInput.js';
 import PasswordInput from '../widgets/PasswordInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
+import PropTypes from 'prop-types';
+
 
 class UserCredentialBlock extends Component {
   constructor(props) {
@@ -65,6 +67,13 @@ class UserCredentialBlock extends Component {
       </ContentBlock>
     );
   }
-} 
+}
+
+UserCredentialBlock.propTypes = {
+  id: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  setUserCredentials: PropTypes.func.isRequired
+};
 
 export default UserCredentialBlock;
