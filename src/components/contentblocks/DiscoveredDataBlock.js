@@ -25,7 +25,7 @@ const DiscoveredDataBlock = ({users}) => {
           description="Text shown directly above list of users found in encrypted blob"
         />
       </ContentBlockInstructions>
-      <ul>
+      <ul aria-label="users">
         {items}
       </ul>
     </ContentBlock>

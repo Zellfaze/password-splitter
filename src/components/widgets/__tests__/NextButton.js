@@ -1,30 +1,19 @@
 import React from "react";
-import { unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import ShallowRenderer from 'react-test-renderer/shallow';
+import {render, waitFor, screen} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import NextButton from '../NextButton.js';
+import {IntlProvider} from 'react-intl'
+ 
 
-let container = null;
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it("NextButton component shallow renders without crashing", () => {
-  let stubFunction = (() => {return;});
-  const renderer = new ShallowRenderer();
+it("renders a button", async () => {
+  const stubFunction = (() => {return;});
+  render(
+    <IntlProvider locale="en" defaultLocale="en">
+      <NextButton onClick={stubFunction} />
+    </IntlProvider>
+  );
   
-  act(() => {
-    renderer.render(<NextButton onClick={stubFunction} />, container);
-  });
+  await waitFor(() => screen.getByRole('button'));
+  
+  expect(screen.getByRole('button')).toBeVisible();
 });
- 
- 
