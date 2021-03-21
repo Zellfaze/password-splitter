@@ -13,7 +13,7 @@ class NumberInput extends Component {
   }
   
   onChange(event) {
-    this.props.onChange(newValue);
+    this.props.onChange(Number(event.target.value));
   }
   
   render() {

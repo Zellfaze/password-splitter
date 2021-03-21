@@ -23,7 +23,7 @@ it("LoadActivityStage1 shallow renders without crashing", () => {
   const renderer = new ShallowRenderer();
   
   act(() => {
-    renderer.render(<LoadActivityStage1 onNextSection={stubFunction} addMessage={stubFunction} id={0} />, container);
+    renderer.render(<LoadActivityStage1 onNextSection={stubFunction} addMessage={stubFunction} id="abcdefabcdefabcd" />, container);
   });
 });
  

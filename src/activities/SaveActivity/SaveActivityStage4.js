@@ -26,7 +26,7 @@ class SaveActivityStage4 extends Component {
               defaultMessage="Please save the following link for your records:"
               description="Instructions shown right before the final link"
             />
-            <a href={link}>{link}</a>
+            <a data-testid="final-link" href={link}>{link}</a>
           </p>
         </ContentBlock>
       } instructions="" />

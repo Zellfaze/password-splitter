@@ -4,7 +4,7 @@ import SaveActivityStage2 from './SaveActivity/SaveActivityStage2.js';
 import SaveActivityStage3 from './SaveActivity/SaveActivityStage3.js';
 import SaveActivityStage4 from './SaveActivity/SaveActivityStage4.js';
 import CryptoFunctions from '../lib/crypto.js';
-import Jquery from 'jquery';
+import api from '../lib/api.js';
 import PropTypes from 'prop-types';
 
 
@@ -41,16 +41,13 @@ class SaveActivity extends Component {
     CryptoFunctions.generateBlob(plaintext, groupSize, requiredMembers, credentials).then( (blob) => {
       // Attempt to save the blob
       this.props.addMessage("Saving...", "info");
-      return Jquery.post(`/api/store/`, {blob: blob}).then( (response) => {
-        // Make sure that the data was saved
-        if (response.status !== 201) { return Promise.reject("Unable to store data on the server!"); }
-        
-        // Everything went fine, let's show them the ID
-        this.props.addMessage("Saved.", "info");
-        this.setState({
-          stagenumber: this.state.stagenumber+1,
-          cipherText: response.data.id
-        });
+      return api.saveBlob(blob);
+    }).then( (response) => {
+      // Everything went fine, let's show them the ID
+      this.props.addMessage("Saved.", "info");
+      this.setState({
+        stagenumber: this.state.stagenumber+1,
+        cipherText: response
       });
     }).catch( (err) => {
       this.props.addMessage(err, "danger");

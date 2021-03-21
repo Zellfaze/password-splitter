@@ -16,12 +16,12 @@ class UserCredentialBlock extends Component {
     this.onPasswordChange = this.onPasswordChange.bind(this);
   }
   
-  onUsernameChange(event) {
-    this.props.setUserCredentials(this.props.id, event.target.value, this.props.password);
+  onUsernameChange(newValue) {
+    this.props.setUserCredentials(this.props.id, newValue, this.props.password);
   }
   
-  onPasswordChange(event) {
-    this.props.setUserCredentials(this.props.id, this.props.username, event.target.value);
+  onPasswordChange(newValue) {
+    this.props.setUserCredentials(this.props.id, this.props.username, newValue);
   }
   
   render() {
@@ -55,7 +55,7 @@ class UserCredentialBlock extends Component {
             description="Label shown next to username field"
           />
         </InputLabel>
-        <TextInput id={`username$${id}`} value={username} onChange={this.onUsernameChange} />
+        <TextInput id={`username${id}`} value={username} onChange={this.onUsernameChange} />
         <InputLabel id={`password${id}`}>
           <FormattedMessage
             id="usercredentialblock-label-password"

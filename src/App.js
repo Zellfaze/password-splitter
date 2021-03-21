@@ -99,7 +99,7 @@ class App extends Component {
   }
   
   changeActivity(newActivity) {
-    this.setState({ currentActivity: newActivity, id: null });
+    this.setState({ currentActivity: newActivity, id: "" });
   }
 }
 

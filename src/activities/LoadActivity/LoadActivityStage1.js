@@ -4,6 +4,7 @@ import LoadText from './LoadText.js';
 import KeyInputBlock from '../../components/contentblocks/KeyInputBlock.js';
 import Jquery from 'jquery';
 import CryptoFunctions from '../../lib/crypto.js';
+import api from '../../lib/api.js';
 import PropTypes from 'prop-types';
 
 class LoadActivityStage1 extends Component {
@@ -18,7 +19,7 @@ class LoadActivityStage1 extends Component {
     this.advanceSection = this.advanceSection.bind(this);
     
     // If we were given an ID, let's go ahead and try it
-    if (this.props.id !== null) {
+    if (this.props.id !== "") {
       this.advanceSection();
     }
   }
@@ -31,12 +32,11 @@ class LoadActivityStage1 extends Component {
     }
     
     // Try to fetch the blob from the server
-    Jquery.get(`/api/get/${this.state.id}`).then( (data) => {
-      // Validate that this blob is good
-      if ((data.status !== 200) || (!CryptoFunctions.validateBlob(data.data.blob))) { this.props.addMessage("Invalid ID!", "danger"); return; }
-      
+    api.loadBlob(this.state.id).then( (data) => {
       // Advance to the next section
       this.props.onNextSection(data.data.blob);
+    }).catch( (err) => {
+      this.props.addMessage(err, "danger");
     });
   }
   
@@ -54,6 +54,7 @@ class LoadActivityStage1 extends Component {
 }
 
 LoadActivityStage1.propTypes = {
+  id: PropTypes.string.isRequired,
   addMessage: PropTypes.func.isRequired,
   onNextSection: PropTypes.func.isRequired
 }
