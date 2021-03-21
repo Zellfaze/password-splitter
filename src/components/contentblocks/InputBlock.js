@@ -23,13 +23,11 @@ class InputBlock extends Component {
     let htmlID = `inputBlock-${this.state.formID}`;
     
     return (
-      <ContentBlock title={title} body={
-        <Fragment>
-          <ContentBlockInstructions>{instructionsText}</ContentBlockInstructions>
-          <InputLabel id={htmlID}>{label}</InputLabel>
-          <TextAreaInput id={htmlID} rows={rows} value={text} onChange={this.props.setText} />
-        </Fragment>
-      } />
+      <ContentBlock title={title} >
+        <ContentBlockInstructions>{instructionsText}</ContentBlockInstructions>
+        <InputLabel id={htmlID}>{label}</InputLabel>
+        <TextAreaInput id={htmlID} rows={rows} value={text} onChange={this.props.setText} />
+      </ContentBlock>
     );
   }
 }

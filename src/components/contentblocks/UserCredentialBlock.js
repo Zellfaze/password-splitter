@@ -38,34 +38,31 @@ class UserCredentialBlock extends Component {
             description="Title shown for block where username/password combos are entered"
           />
         }
-        body={
-          <Fragment>
-            <ContentBlockInstructions>
-              <FormattedMessage
-                id="usercredentialblock-instructions"
-                defaultMessage="Enter the username and password here"
-                description="Instructions show above username/password fields"
-              />
-            </ContentBlockInstructions>
-            <InputLabel id={`username${id}`}>
-              <FormattedMessage
-                id="usercredentialblock-label-username"
-                defaultMessage="Username"
-                description="Label shown next to username field"
-              />
-            </InputLabel>
-            <TextInput id={`username$${id}`} value={username} onChange={this.onUsernameChange} />
-            <InputLabel id={`password${id}`}>
-              <FormattedMessage
-                id="usercredentialblock-label-password"
-                defaultMessage="Password"
-                description="Label shown next to password field"
-              />
-            </InputLabel>
-            <PasswordInput id={`password${id}`} value={password} onChange={this.onPasswordChange} />
-          </Fragment>
-        }
-      />
+      >
+        <ContentBlockInstructions>
+          <FormattedMessage
+            id="usercredentialblock-instructions"
+            defaultMessage="Enter the username and password here"
+            description="Instructions show above username/password fields"
+          />
+        </ContentBlockInstructions>
+        <InputLabel id={`username${id}`}>
+          <FormattedMessage
+            id="usercredentialblock-label-username"
+            defaultMessage="Username"
+            description="Label shown next to username field"
+          />
+        </InputLabel>
+        <TextInput id={`username$${id}`} value={username} onChange={this.onUsernameChange} />
+        <InputLabel id={`password${id}`}>
+          <FormattedMessage
+            id="usercredentialblock-label-password"
+            defaultMessage="Password"
+            description="Label shown next to password field"
+          />
+        </InputLabel>
+        <PasswordInput id={`password${id}`} value={password} onChange={this.onPasswordChange} />
+      </ContentBlock>
     );
   }
 } 

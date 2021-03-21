@@ -17,21 +17,18 @@ const DiscoveredDataBlock = ({users}) => {
           description="Title shown for block containing list of all users found in an encrypted blob"
         />
       }
-      body={
-        <Fragment>
-          <ContentBlockInstructions>
-            <FormattedMessage
-              id="discovereddatablock-list"
-              defaultMessage="Found Users:"
-              description="Text shown directly above list of users found in encrypted blob"
-            />
-          </ContentBlockInstructions>
-          <ul>
-            {items}
-          </ul>
-        </Fragment>
-      }
-    />
+    >
+      <ContentBlockInstructions>
+        <FormattedMessage
+          id="discovereddatablock-list"
+          defaultMessage="Found Users:"
+          description="Text shown directly above list of users found in encrypted blob"
+        />
+      </ContentBlockInstructions>
+      <ul>
+        {items}
+      </ul>
+    </ContentBlock>
   );
 };
 
