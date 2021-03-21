@@ -4,6 +4,7 @@ import ContentBlock from '../ContentBlock.js';
 import TextInput from '../widgets/TextInput.js';
 import PasswordInput from '../widgets/PasswordInput.js';
 import InputLabel from '../widgets/InputLabel.js';
+import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
 
 class UserCredentialBlock extends Component {
   constructor(props) {
@@ -39,13 +40,13 @@ class UserCredentialBlock extends Component {
         }
         body={
           <Fragment>
-            <p className="card-text">
+            <ContentBlockInstructions>
               <FormattedMessage
                 id="usercredentialblock-instructions"
                 defaultMessage="Enter the username and password here"
                 description="Instructions show above username/password fields"
               />
-            </p>
+            </ContentBlockInstructions>
             <InputLabel id={`username${id}`}>
               <FormattedMessage
                 id="usercredentialblock-label-username"

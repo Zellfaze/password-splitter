@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import NumberInput from '../widgets/NumberInput.js';
 import InputLabel from '../widgets/InputLabel.js';
+import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
 
 export default function XofNBlock({groupSize, requiredMembers, setGroupSize, setRequiredMembers}) {
   return (
@@ -16,13 +17,13 @@ export default function XofNBlock({groupSize, requiredMembers, setGroupSize, set
       }
       body={
         <Fragment>
-          <p className="card-text">
+          <ContentBlockInstructions>
             <FormattedMessage
               id="xofnblock-instructions"
               defaultMessage="In this section set the group size and other parameters."
               description="Instructions shown above where the size of the group and number of required members is input"
             />
-          </p>
+          </ContentBlockInstructions>
           <div className="mb-2">
             <InputLabel id="groupSize">
               <FormattedMessage

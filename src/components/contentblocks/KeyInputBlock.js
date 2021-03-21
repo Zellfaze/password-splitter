@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import TextInput from '../widgets/TextInput.js';
 import InputLabel from '../widgets/InputLabel.js';
+import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
 
 export default function KeyInputBlock({keyID, onChange}) {  
   return (
@@ -16,6 +17,13 @@ export default function KeyInputBlock({keyID, onChange}) {
       }
       body={
         <Fragment>
+          <ContentBlockInstructions>
+            <FormattedMessage
+              id="keyinputblock-instructions"
+              defaultMessage="Enter the ID number of your saved blob below."
+              description="Instructions shown to user on asking them to input the ID of their blob"
+            />
+          </ContentBlockInstructions>
           <InputLabel id="KeyInputBlock">
             <FormattedMessage
               id="keyinputblock-label"

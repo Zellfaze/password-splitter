@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import InputLabel from '../widgets/InputLabel.js';
+import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
 
 export default function CipherTextBlock({cipherText}) {
   return (
@@ -15,13 +16,13 @@ export default function CipherTextBlock({cipherText}) {
       }
       body={
         <Fragment>
-          <p className="card-text">
+          <ContentBlockInstructions>
             <FormattedMessage
               id="ciphertextblock-instructions"
               defaultMessage="Below is the encrypted blob. Please save for your reference."
               description="Instructions show next to outputted encrypted blob"
             />
-          </p>
+          </ContentBlockInstructions>
           <InputLabel id="cipherTextBlock">
             <FormattedMessage
               id="ciphertextblock-label"
