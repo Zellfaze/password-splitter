@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import NumberInput from '../widgets/NumberInput.js';
+import InputLabel from '../widgets/InputLabel.js';
 
 export default function XofNBlock({groupSize, requiredMembers, setGroupSize, setRequiredMembers}) {
   return (
@@ -23,23 +24,23 @@ export default function XofNBlock({groupSize, requiredMembers, setGroupSize, set
             />
           </p>
           <div className="mb-2">
-            <label htmlFor="groupSize" className="form-label">
+            <InputLabel id="groupSize">
               <FormattedMessage
                 id="xofnblock-label-groupsize"
                 defaultMessage="Group Size"
                 description="Label shown next to group size field"
               />
-            </label>
+            </InputLabel>
             <NumberInput id="groupSize" value={groupSize} onChange={setGroupSize} maxValue={255} minValue={requiredMembers} />
           </div>
           <div className="mb-2">
-            <label htmlFor="requiredMembers" className="form-label">
+            <InputLabel id="requiredMembers">
               <FormattedMessage
                 id="xofnblock-label-requiredmembers"
                 defaultMessage="Required Members"
                 description="Label shown next to group size field"
               />
-            </label>
+            </InputLabel>
             <NumberInput id="requiredMembers" value={requiredMembers} onChange={setRequiredMembers} maxValue={groupSize} minValue={2} />
           </div>
         </Fragment>

@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
 import TextInput from '../widgets/TextInput.js';
 import PasswordInput from '../widgets/PasswordInput.js';
+import InputLabel from '../widgets/InputLabel.js';
 
 class UserCredentialBlock extends Component {
   constructor(props) {
@@ -45,21 +46,21 @@ class UserCredentialBlock extends Component {
                 description="Instructions show above username/password fields"
               />
             </p>
-            <label htmlFor={`username${id}`} className="form-label">
+            <InputLabel id={`username${id}`}>
               <FormattedMessage
                 id="usercredentialblock-label-username"
                 defaultMessage="Username"
                 description="Label shown next to username field"
               />
-            </label>
+            </InputLabel>
             <TextInput id={`username$${id}`} value={username} onChange={this.onUsernameChange} />
-            <label htmlFor={`password${id}`} className="form-label">
+            <InputLabel id={`password${id}`}>
               <FormattedMessage
                 id="usercredentialblock-label-password"
                 defaultMessage="Password"
                 description="Label shown next to password field"
               />
-            </label>
+            </InputLabel>
             <PasswordInput id={`password${id}`} value={password} onChange={this.onPasswordChange} />
           </Fragment>
         }

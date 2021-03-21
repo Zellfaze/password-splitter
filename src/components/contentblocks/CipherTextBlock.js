@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {FormattedMessage} from 'react-intl';
 import ContentBlock from '../ContentBlock.js';
+import InputLabel from '../widgets/InputLabel.js';
 
 export default function CipherTextBlock({cipherText}) {
   return (
@@ -21,13 +22,13 @@ export default function CipherTextBlock({cipherText}) {
               description="Instructions show next to outputted encrypted blob"
             />
           </p>
-          <label htmlFor="cipherTextBlock" className="form-label">
+          <InputLabel id="cipherTextBlock">
             <FormattedMessage
               id="ciphertextblock-label"
               defaultMessage="Ciphertext"
               description="Label shown directly above outputted encrypted blob"
             />
-          </label>
+          </InputLabel>
           <textarea className="form-control" id="cipherTextBlock" rows="3"  value={cipherText} disabled={true}/>
         </Fragment>
       }

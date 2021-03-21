@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import ContentBlock from '../ContentBlock.js';
 import TextAreaInput from '../widgets/TextAreaInput.js';
+import InputLabel from '../widgets/InputLabel.js';
 
 class InputBlock extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class InputBlock extends Component {
       <ContentBlock title={title} body={
         <Fragment>
           <p className="card-text">{instructionsText}</p>
-          <label htmlFor={htmlID} className="form-label">{label}</label>
+          <InputLabel id={htmlID}>{label}</InputLabel>
           <TextAreaInput id={htmlID} rows={rows} value={text} onChange={this.props.setText} />
         </Fragment>
       } />
