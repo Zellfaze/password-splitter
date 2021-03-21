@@ -76,6 +76,21 @@ class SaveActivity extends Component {
   }
   
   advanceSection3(credentialsArray) {
+    // Make sure every credential object is defined
+    const allDefined = credentialsArray.map( (credentials) => {
+      // Test each credential
+      if ((credentials.username === "") || (credentials.password === "")) {
+        return false;
+      }
+      return true;
+    }).reduce( (finalIsValid, currentIsValid) => {
+      // Reduce array down to single bool
+      return finalIsValid && currentIsValid;
+    });
+    
+    if (!allDefined) {
+      return this.props.addMessage("All username/password boxes must be filled!", "danger");
+    }
     this.generateCipherText(this.plaintext, this.state.groupSize, this.state.requiredMembers, credentialsArray);
   }
   

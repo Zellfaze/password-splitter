@@ -17,7 +17,7 @@ class MessageBox extends Component {
   
   componentDidMount() {
     this.timerID = setTimeout(() => {
-      this.remove();
+      this.props.removeMessage(this.props.id);
     }, 5000);
   }
   
