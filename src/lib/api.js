@@ -1,27 +1,51 @@
-import Jquery from 'jquery';
+import CryptoFunctions from './crypto.js';
 
 const api = {
   saveBlob: saveBlob,
-  loadBlob: loadBlob
+  loadBlob: loadBlob,
 }
 
 function saveBlob(blob) {
-  return Jquery.post(`/api/store/`, {blob: blob}).then( (response) => {
-    // Make sure that the data was saved
-    if (response.status !== 201) { return Promise.reject("Unable to store data on the server!"); }
-    
-    // Return the ID number
-    return response.data.id;
+  var mutation = `mutation createBlob($data: String!) { createBlob(data: $data) { id, data }}`;
+  
+  return fetch(`graphql`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query: mutation,
+      variables: { data: blob }
+    })
+  }).then( (response) => {
+    if (response.status == 200) {
+      return response.json()
+    }
+  }).then( (json) => {
+    return json.data.createBlob;
   });
 }
 
 function loadBlob(id) {
-  return Jquery.get(`/api/get/${id}`).then( (data) => {
-    // Validate that this blob is good
-    if ((data.status !== 200) || (!CryptoFunctions.validateBlob(data.data.blob))) { return Promise.reject("Could not load blob!"); }
-    
-    // Return the data
-    return data.data.blob;
+  var query = `query blob($id: String!) { blob(id: $id) { id, data }}`;
+  
+  return fetch(`graphql`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: { id: id }
+    })
+  }).then( (response) => {
+    if (response.status == 200) {
+      return response.json()
+    }
+  }).then( (json) => {
+    return json.data.blob;
   });
 }
 

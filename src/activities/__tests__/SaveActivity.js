@@ -24,7 +24,7 @@ it("renders without crashing", () => {
 it("passes integration test", async () => {
   // Mock some functions
   const addMessage = jest.fn();
-  api.saveBlob.mockResolvedValue("abcdef");
+  api.saveBlob.mockResolvedValue({id: "abcdefabcdefabcd", data: "actually-cipher-text" });
   CryptoFunctions.generateBlob.mockResolvedValue(Promise.resolve("blob"));
   
   render(

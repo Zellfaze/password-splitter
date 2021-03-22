@@ -24,7 +24,7 @@ it("renders without crashing", () => {
 it("passes integration test", async () => {
   // Mock some functions
   const addMessage = jest.fn()
-  api.loadBlob.mockResolvedValue({data: {data: { blob: "actually-cipher-text" } } });
+  api.loadBlob.mockResolvedValue({id: "abcdefabcdefabcd", data: "actually-cipher-text" });
   CryptoFunctions.extractMetadataFromBlob.mockResolvedValue({groupSize: 5, requiredMembers: 4, users: ["user1", "user2", "user3", "user5"]});
   CryptoFunctions.decryptBlob.mockResolvedValue("This is test plaintext.");
   

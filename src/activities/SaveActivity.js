@@ -47,7 +47,7 @@ class SaveActivity extends Component {
       this.props.addMessage("Saved.", "info");
       this.setState({
         stagenumber: this.state.stagenumber+1,
-        cipherText: response
+        cipherText: response.id
       });
     }).catch( (err) => {
       this.props.addMessage(err, "danger");

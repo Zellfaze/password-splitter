@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ActivityStage from '../../components/ActivityStage.js';
 import LoadText from './LoadText.js';
 import KeyInputBlock from '../../components/contentblocks/KeyInputBlock.js';
-import Jquery from 'jquery';
 import CryptoFunctions from '../../lib/crypto.js';
 import api from '../../lib/api.js';
 import PropTypes from 'prop-types';
@@ -32,10 +31,11 @@ class LoadActivityStage1 extends Component {
     }
     
     // Try to fetch the blob from the server
-    api.loadBlob(this.state.id).then( (data) => {
+    api.loadBlob(this.state.id).then( (blob) => {
       // Advance to the next section
-      this.props.onNextSection(data.data.blob);
+      this.props.onNextSection(blob.data);
     }).catch( (err) => {
+      
       this.props.addMessage(err, "danger");
     });
   }
