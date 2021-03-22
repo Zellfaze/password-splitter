@@ -1,30 +1,17 @@
 import React from "react";
-import { unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import ShallowRenderer from 'react-test-renderer/shallow';
-import TextInput from '../TextInput.js';
+import {render, waitFor, screen, fireEvent} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import TextAreaInput from '../TextAreaInput.js';
 
-let container = null;
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it("TextInput component shallow renders without crashing", () => {
-  let stubFunction = (() => {return;});
-  const renderer = new ShallowRenderer();
+it("renders without crashing and calls onChange with correct value", async () => {
+  let stubFunction = jest.fn();
   
-  act(() => {
-    renderer.render(<TextInput id="text-input-0" value="" onChange={stubFunction} />, container);
-  });
+  render(<TextAreaInput id="textarea" rows={3} value="" onChange={stubFunction} />);
+  
+  await waitFor(() => screen.getByTestId('textarea-input'));
+  
+  // Make sure that it calls onChange with the correct value
+  fireEvent.change(screen.getByTestId('textarea-input'), { target: { value: "Text" } });
+  expect(stubFunction).toHaveBeenCalledTimes(1);
+  expect(stubFunction.mock.calls[0][0]).toBe("Text");
 });
- 
- 

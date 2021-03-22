@@ -18,7 +18,7 @@ class TextInput extends Component {
       value
     } = this.props
 
-    return (<input id={id} className="form-control" type="text" value={value} onChange={this.onChange}/>);
+    return (<input data-testid="textinput-input" id={id} className="form-control" type="text" value={value} onChange={this.onChange}/>);
   }
 }
 

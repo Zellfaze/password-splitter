@@ -18,7 +18,7 @@ class PasswordInput extends Component {
       value
     } = this.props
 
-    return (<input id={id} className="form-control" type="password" value={value} onChange={this.onChange}/>);
+    return (<input data-testid="password-input" id={id} className="form-control" type="password" value={value} onChange={this.onChange}/>);
   }
 }
 

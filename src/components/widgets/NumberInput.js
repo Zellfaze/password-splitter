@@ -13,6 +13,16 @@ class NumberInput extends Component {
   }
   
   onChange(event) {
+    const {
+      minValue,
+      maxValue
+    } = this.props
+    const newValue = Number(event.target.value);
+    
+    // Make sure the new value is in range
+    if ((maxValue !== null) && (maxValue < newValue)) { return; }
+    if ((minValue !== null) && (minValue > newValue)) { return; }
+    
     this.props.onChange(Number(event.target.value));
   }
   

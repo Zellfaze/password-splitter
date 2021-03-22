@@ -19,7 +19,7 @@ class TextAreaInput extends Component {
       rows
     } = this.props
     
-    return (<textarea className="form-control" id={id} rows={rows}  value={value} onChange={this.onChange} />);
+    return (<textarea data-testid="textarea-input" className="form-control" id={id} rows={rows}  value={value} onChange={this.onChange} />);
   }
 }
 
