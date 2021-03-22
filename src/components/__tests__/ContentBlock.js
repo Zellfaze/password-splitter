@@ -1,30 +1,16 @@
 import React from "react";
-import { unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import ShallowRenderer from 'react-test-renderer/shallow';
+import {render, waitFor, screen, fireEvent} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import ContentBlock from '../ContentBlock.js';
 
-let container = null;
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it("ContentBlock component shallow renders without crashing", () => {
-  let stubFunction = (() => {return;});
-  const renderer = new ShallowRenderer();
+it("renders without crashing", async () => {
+  let stubFunction = jest.fn();
   
-  act(() => {
-    renderer.render(<ContentBlock title="Instructions">Content</ContentBlock>, container);
-  });
+  render(<ContentBlock title="Instructions">Content</ContentBlock>);
+  
+  await waitFor(() => screen.getByText("Instructions"));
+  
+  // Make sure content and instructions are rendered
+  expect(screen.getByText("Instructions")).toHaveTextContent("Instructions");
+  expect(screen.getByText("Content")).toHaveTextContent("Content");
 });
- 
- 
