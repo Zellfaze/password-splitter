@@ -28,6 +28,7 @@
     "easy-extract": "formatjs extract 'src/**/*.js*' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "easy-compile": "formatjs compile lang/en.json --ast --out-file src/compiled-lang/en.json"
   },
+  "proxy": "http://localhost:4000",
   "eslintConfig": {
     "plugins": [
       "formatjs"
