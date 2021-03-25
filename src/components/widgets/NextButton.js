@@ -1,7 +1,13 @@
+// React imports
 import React, { Component } from 'react';
 import {FormattedMessage} from 'react-intl';
-import ContentBlock from '../ContentBlock.js';
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Button from 'react-bootstrap/Button';
+
+// Component imports
+import ContentBlock from '../ContentBlock.js';
 
 function NextButton({onClick}) {
   return (
@@ -15,13 +21,13 @@ function NextButton({onClick}) {
       }
     >
       <div className="d-grid gap-2">
-        <button className="btn btn-primary" type="button" onClick={onClick}>
+        <Button variant="primary" block size="lg" onClick={onClick}>
           <FormattedMessage
             id="nextbutton-button"
             defaultMessage="Next"
             description="Text shown on the next section button"
           />
-        </button>
+        </Button>
       </div>
     </ContentBlock>
   );

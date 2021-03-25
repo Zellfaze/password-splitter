@@ -1,8 +1,11 @@
+// React imports
 import React, { Component } from 'react';
-import ActivityStage from '../../components/ActivityStage.js';
-import SaveText from './SaveText.js';
-import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
 import PropTypes from 'prop-types';
+
+// Component imports
+import ActivityStage from '../../components/ActivityStage.js';
+import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
+import SaveText from './SaveText.js';
 
 class SaveActivityStage3 extends Component {
   constructor(props) {

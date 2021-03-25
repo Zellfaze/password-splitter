@@ -1,10 +1,15 @@
+// React imports
 import React, { Component } from 'react';
 import {FormattedMessage} from 'react-intl';
 
+// Bootstrap imports
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 function SaveText() {
   return (
-    <div className="row justify-content-center">
-      <div className="col-md-auto">
+    <Row className="justify-content-center">
+      <Col md="auto">
         <p>
           <FormattedMessage
             id="saveactivity-instructions"
@@ -12,8 +17,8 @@ function SaveText() {
             description="Save activity instructions for the top of the screen"
           />
         </p>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 }
 

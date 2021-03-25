@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+// React imports
+import React, { Component } from 'react'; 
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
 
 class TextInput extends Component {
   constructor(props) {
@@ -18,7 +22,7 @@ class TextInput extends Component {
       value
     } = this.props
 
-    return (<input data-testid="textinput-input" id={id} className="form-control" type="text" value={value} onChange={this.onChange}/>);
+    return (<Form.Control type="text" data-testid="textinput-input" id={id} value={value} onChange={this.onChange}/>);
   }
 }
 

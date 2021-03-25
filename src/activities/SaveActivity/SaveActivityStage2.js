@@ -1,8 +1,11 @@
+// React imports
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Component imports
 import ActivityStage from '../../components/ActivityStage.js';
 import SaveText from './SaveText.js';
 import XofNBlock from '../../components/contentblocks/XofNBlock.js';
-import PropTypes from 'prop-types';
 
 class SaveActivityStage2 extends Component {
   constructor(props) {

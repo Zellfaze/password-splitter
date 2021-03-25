@@ -1,19 +1,29 @@
+// React imports
 import React, { Component } from 'react';
-import constants from '../../lib/constants.js';
+import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
+// Asset imports
 import logo from './logo.svg';
 import './HeaderBlock.css';
-import PropTypes from 'prop-types';
+
+// Other imports
+import constants from '../../lib/constants.js';
 
 function HeaderBlock({headerText, changeActivity}) {
   return (
-    <div className="container-fluid">
-      <div className="row header">
-        <div className="col-12 header-top">
+    <Container fluid>
+      <Row className="header">
+        <Col xs={12} className="header-top">
           <img src={logo} className="header-logo" alt="logo" onClick={() => {changeActivity(constants.activities.HOME);}}/>
           <h2>{headerText}</h2>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

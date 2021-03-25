@@ -1,9 +1,14 @@
+// React imports
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Activity Stage imports
 import LoadActivityStage1 from './LoadActivity/LoadActivityStage1.js';
 import LoadActivityStage2 from './LoadActivity/LoadActivityStage2.js';
 import LoadActivityStage3 from './LoadActivity/LoadActivityStage3.js';
+
+// Other imports
 import CryptoFunctions from '../lib/crypto.js';
-import PropTypes from 'prop-types';
 
 const stages = {
   CIPHERTEXT: 0,

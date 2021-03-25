@@ -19,9 +19,7 @@ it("renders a list of users", async () => {
   // Get the list of users out of the component
   let items;
   await waitFor(() => {
-    const list = screen.getByRole('list', {
-      name: /users/i,
-    });
+    const list = screen.getByRole('list');
     
     items = within(list).getAllByRole("listitem");
   });

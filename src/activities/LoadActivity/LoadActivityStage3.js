@@ -1,8 +1,11 @@
+// React imports
 import React, { Component } from 'react';
-import ActivityStage from '../../components/ActivityStage.js';
-import LoadText from './LoadText.js';
-import CipherTextBlock from '../../components/contentblocks/CipherTextBlock.js';
 import PropTypes from 'prop-types';
+
+// Component imports
+import ActivityStage from '../../components/ActivityStage.js';
+import CipherTextBlock from '../../components/contentblocks/CipherTextBlock.js';
+import LoadText from './LoadText.js';
 
 class LoadActivityStage3 extends Component {
   render() {

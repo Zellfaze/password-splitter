@@ -1,9 +1,15 @@
+// React imports
 import React, { Component, Fragment } from 'react';
 import {FormattedMessage} from 'react-intl';
+import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
+
+// Compontent imports
 import ContentBlock from '../ContentBlock.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
-import PropTypes from 'prop-types';
 
 function CipherTextBlock({cipherText}) {
   return (
@@ -30,7 +36,7 @@ function CipherTextBlock({cipherText}) {
           description="Label shown directly above outputted encrypted blob"
         />
       </InputLabel>
-      <textarea className="form-control" id="cipherTextBlock" rows="3"  value={cipherText} disabled={true}/>
+      <Form.Control as="textarea" rows={3} id="cipherTextBlock" value={cipherText} readOnly />
     </ContentBlock>
   );
 }

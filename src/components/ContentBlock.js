@@ -1,16 +1,20 @@
+// React imports
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// Bootstrap imports
+import Card from 'react-bootstrap/Card';
+
 function ContentBlock({title, children}) {
   return (
-    <div className="card text-dark bg-light mb-2">
-      <div className="card-header">
+    <Card className="text-dark bg-light mb-2">
+      <Card.Header>
         {title}
-      </div>
-      <div className="card-body">
+      </Card.Header>
+      <Card.Body>
         {children}
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   );
 }
 

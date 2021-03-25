@@ -1,11 +1,15 @@
+// React imports
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
+
 function InputLabel({id, children}) {
   return (
-    <label htmlFor={id} className="form-label">
+    <Form.Label htmlFor={id} className="form-label">
       {children}
-    </label>
+    </Form.Label>
   );
 }
 

@@ -1,5 +1,9 @@
+// React imports
 import React, { Component } from 'react'; 
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
 
 class PasswordInput extends Component {
   constructor(props) {
@@ -18,7 +22,7 @@ class PasswordInput extends Component {
       value
     } = this.props
 
-    return (<input data-testid="password-input" id={id} className="form-control" type="password" value={value} onChange={this.onChange}/>);
+    return (<Form.Control type="password" data-testid="password-input" id={id} value={value} onChange={this.onChange}/>);
   }
 }
 

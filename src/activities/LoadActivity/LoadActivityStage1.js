@@ -1,10 +1,15 @@
+// React imports
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Component imports
 import ActivityStage from '../../components/ActivityStage.js';
-import LoadText from './LoadText.js';
 import KeyInputBlock from '../../components/contentblocks/KeyInputBlock.js';
+import LoadText from './LoadText.js';
+
+// Other imports
 import CryptoFunctions from '../../lib/crypto.js';
 import api from '../../lib/api.js';
-import PropTypes from 'prop-types';
 
 class LoadActivityStage1 extends Component {
   constructor(props) {

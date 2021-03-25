@@ -1,5 +1,9 @@
+// React imports
 import React, { Component } from 'react'; 
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
 
 class TextAreaInput extends Component {
   constructor(props) {
@@ -19,7 +23,7 @@ class TextAreaInput extends Component {
       rows
     } = this.props
     
-    return (<textarea data-testid="textarea-input" className="form-control" id={id} rows={rows}  value={value} onChange={this.onChange} />);
+    return (<Form.Control as="textarea" data-testid="textarea-input" id={id} rows={rows}  value={value} onChange={this.onChange} />);
   }
 }
 

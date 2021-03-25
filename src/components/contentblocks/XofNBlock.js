@@ -1,10 +1,13 @@
+// React imports
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
+
+// Component imports
 import ContentBlock from '../ContentBlock.js';
 import NumberInput from '../widgets/NumberInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
-import PropTypes from 'prop-types';
 
 function XofNBlock({groupSize, requiredMembers, setGroupSize, setRequiredMembers}) {
   return (

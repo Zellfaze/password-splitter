@@ -1,5 +1,9 @@
+// React imports
 import React, { Component } from 'react'; 
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
 
 class NumberInput extends Component {
   constructor(props) {
@@ -32,7 +36,7 @@ class NumberInput extends Component {
       value
     } = this.props
 
-    return (<input id={id} className="form-control" max={this.props.maxValue} min={this.props.minValue} type="number" value={value} onChange={this.onChange}/>);
+    return (<Form.Control type="number" id={id} max={this.props.maxValue} min={this.props.minValue} value={value} onChange={this.onChange} />);
   }
 }
 

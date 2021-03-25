@@ -1,11 +1,16 @@
+// React imports
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Activity stage imports
 import SaveActivityStage1 from './SaveActivity/SaveActivityStage1.js';
 import SaveActivityStage2 from './SaveActivity/SaveActivityStage2.js';
 import SaveActivityStage3 from './SaveActivity/SaveActivityStage3.js';
 import SaveActivityStage4 from './SaveActivity/SaveActivityStage4.js';
+
+// Other imports
 import CryptoFunctions from '../lib/crypto.js';
 import api from '../lib/api.js';
-import PropTypes from 'prop-types';
 
 
 const stages = {

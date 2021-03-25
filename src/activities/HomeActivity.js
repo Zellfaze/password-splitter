@@ -1,6 +1,15 @@
+// React imports
 import React, { Component } from 'react';
-import constants from '../lib/constants.js';
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
+// Other imports
+import constants from '../lib/constants.js';
 
 class HomeActivity extends Component {
   constructor(props) {
@@ -21,12 +30,12 @@ class HomeActivity extends Component {
   render() {
     //TODO: Translate strings on these AutoColButtonComponents
     return (
-      <div className="container-fluid mt-2">
-        <div className="row justify-content-center">
+      <Container fluid className="mt-2">
+        <Row className="justify-content-center">
           <AutoColButtonComponent type="primary" onClick={this.onClickSave} text="Save" /> 
           <AutoColButtonComponent type="secondary" onClick={this.onClickLoad} text="Load" />
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
@@ -35,15 +44,12 @@ HomeActivity.propTypes = {
   changeActivity: PropTypes.func.isRequired
 };
 
-class AutoColButtonComponent extends Component {
-  render() {
-    let buttonClass = `btn btn-${this.props.type} btn-lg`;
-    return (
-      <div className="col-md-auto">
-        <button className={buttonClass} onClick={this.props.onClick}>{this.props.text}</button>
-      </div>
-    );
-  }
+function AutoColButtonComponent(props) {
+  return (
+    <Col md="auto">
+      <Button size="lg" variant={props.type} onClick={props.onClick}>{props.text}</Button>
+    </Col>
+  );
 }
 
 AutoColButtonComponent.propTypes = {

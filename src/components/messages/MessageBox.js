@@ -1,6 +1,11 @@
+// React imports
 import React, { Component } from 'react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 class MessageBox extends Component {
   constructor(props) {
@@ -42,10 +47,10 @@ class MessageBox extends Component {
     );
     
     return (
-      <div className={classes}>
-        {message}
-        <button type="button" className="btn-close" aria-label={close} onClick={() => {removeMessage(id);}} />
-      </div>
+      <Alert variant={level} onClose={() => {removeMessage(id);}}>
+        {message}&nbsp;
+        <Button size="sm" className="btn-close" aria-label={close} onClick={() => {removeMessage(id);}} />
+      </Alert>
     );
   }
 }

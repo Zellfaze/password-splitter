@@ -1,11 +1,14 @@
+// React imports
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
+
+// Component imports
 import ContentBlock from '../ContentBlock.js';
 import TextInput from '../widgets/TextInput.js';
 import PasswordInput from '../widgets/PasswordInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
-import PropTypes from 'prop-types';
 
 
 class UserCredentialBlock extends Component {

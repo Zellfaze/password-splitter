@@ -1,9 +1,12 @@
+// React imports
 import React, { Component } from 'react';
-import {FormattedMessage} from 'react-intl';
-import ActivityStage from '../../components/ActivityStage.js';
-import SaveText from './SaveText.js';
-import ContentBlock from '../../components/ContentBlock.js';
 import PropTypes from 'prop-types';
+import {FormattedMessage} from 'react-intl';
+
+// Component imports
+import ActivityStage from '../../components/ActivityStage.js';
+import ContentBlock from '../../components/ContentBlock.js';
+import SaveText from './SaveText.js';
 
 class SaveActivityStage4 extends Component {
   render() {

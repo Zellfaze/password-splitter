@@ -1,9 +1,12 @@
+// React imports
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+// Component imports
 import ActivityStage from '../../components/ActivityStage.js';
-import LoadText from './LoadText.js';
 import UserCredentialBlock from '../../components/contentblocks/UserCredentialBlock.js';
 import DiscoveredDataBlock from '../../components/contentblocks/DiscoveredDataBlock.js';
-import PropTypes from 'prop-types';
+import LoadText from './LoadText.js';
 
 class LoadActivityStage2 extends Component {
   constructor(props) {

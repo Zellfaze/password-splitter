@@ -1,6 +1,9 @@
+// React imports
 import React, { Component } from 'react';
-import MessageBox from './MessageBox.js';
 import PropTypes from 'prop-types';
+
+// Component imports
+import MessageBox from './MessageBox.js';
 
 function ErrorBlock({messages, removeMessage}) {
   let messageBoxes = messages.map( (currentMessage) => {

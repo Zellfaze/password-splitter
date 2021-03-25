@@ -1,6 +1,12 @@
+// React imports
 import React, { Component } from 'react';
-import NextButton from './widgets/NextButton.js';
 import PropTypes from 'prop-types';
+
+// Bootstrap imports
+import Container from 'react-bootstrap/Container';
+
+// Component imports
+import NextButton from './widgets/NextButton.js';
 
 function ActivityStage({advanceSection, instructions, components}) {
   let button = null;
@@ -10,11 +16,11 @@ function ActivityStage({advanceSection, instructions, components}) {
   }
   
   return (
-    <div className="container-fluid mt-2">
+    <Container className="mt-2">
       {instructions}
       {components}
       {button}
-    </div>
+    </Container>
   );
 }
 

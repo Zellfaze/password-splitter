@@ -1,10 +1,13 @@
+// React imports
 import React, { Component, Fragment } from 'react'; 
 import {FormattedMessage} from 'react-intl';
+import PropTypes from 'prop-types';
+
+// Component imports
 import ContentBlock from '../ContentBlock.js';
 import TextInput from '../widgets/TextInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
-import PropTypes from 'prop-types';
 
 function KeyInputBlock({keyID, onChange}) {  
   return (

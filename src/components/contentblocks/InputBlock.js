@@ -1,9 +1,12 @@
+// React imports
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+// Component imports
 import ContentBlock from '../ContentBlock.js';
 import TextAreaInput from '../widgets/TextAreaInput.js';
 import InputLabel from '../widgets/InputLabel.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
-import PropTypes from 'prop-types';
 
 class InputBlock extends Component {
   constructor(props) {

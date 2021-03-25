@@ -1,11 +1,15 @@
+// React imports
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// Bootstrap imports
+import Card from 'react-bootstrap/Card';
+
 function ContentBlockInstructions({children}) {
   return (
-    <p className="card-text">
+    <Card.Text>
       {children}
-    </p>
+    </Card.Text>
   );
 }
 

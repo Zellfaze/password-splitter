@@ -1,12 +1,18 @@
+// React imports
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
+
+// Bootstrap imports
+import ListGroup from 'react-bootstrap/ListGroup';
+
+// Component imports
 import ContentBlock from '../ContentBlock.js';
 import ContentBlockInstructions from '../widgets/ContentBlockInstructions.js';
-import PropTypes from 'prop-types';
 
 const DiscoveredDataBlock = ({users}) => {
   const items = users.map( (currentUser) => {
-    return (<li key={currentUser}>{currentUser}</li>);
+    return (<ListGroup.Item role="listitem" key={currentUser}>{currentUser}</ListGroup.Item>);
   });
   
   return (
@@ -26,9 +32,9 @@ const DiscoveredDataBlock = ({users}) => {
           description="Text shown directly above list of users found in encrypted blob"
         />
       </ContentBlockInstructions>
-      <ul aria-label="users">
+      <ListGroup role="list">
         {items}
-      </ul>
+      </ListGroup>
     </ContentBlock>
   );
 };
