@@ -9,14 +9,15 @@ it("renders components and instructions without crashing", async () => {
   
   render(
     <IntlProvider locale="en" defaultLocale="en">
-      <ActivityStage advanceSection={stubFunction} instructions="Instructions" components={<div data-testid="activitystage-component">Content</div>}/>
+      <ActivityStage advanceSection={stubFunction}>
+        <div data-testid="activitystage-component">Content</div>
+      </ActivityStage>
     </IntlProvider>
   );
   
-  await waitFor(() => screen.getByText("Instructions"));
+  await waitFor(() => screen.getByTestId("activitystage-component"));
   
   // Make sure components and instructions are rendered
-  expect(screen.getByText("Instructions")).toHaveTextContent("Instructions");
   expect(screen.getByTestId("activitystage-component")).toHaveTextContent("Content");
 });
 
@@ -25,7 +26,9 @@ it("renders a button that calls advanceSection when clicked", async () => {
   
   render(
     <IntlProvider locale="en" defaultLocale="en">
-      <ActivityStage advanceSection={stubFunction} instructions="Instructions" components={<div data-testid="activitystage-component">Content</div>}/>
+      <ActivityStage advanceSection={stubFunction}>
+        <div data-testid="activitystage-component">Content</div>
+      </ActivityStage>
     </IntlProvider>
   );
   
@@ -38,11 +41,13 @@ it("renders a button that calls advanceSection when clicked", async () => {
 it("doesn't render a button if advanceSection is not supplied", async () => {
   render(
     <IntlProvider locale="en" defaultLocale="en">
-      <ActivityStage instructions="Instructions" components={<div data-testid="activitystage-component">Content</div>}/>
+      <ActivityStage>
+        <div data-testid="activitystage-component">Content</div>
+      </ActivityStage>
     </IntlProvider>
   );
   
-  await waitFor(() => screen.getByText("Instructions"));
+  await waitFor(() => screen.getByTestId("activitystage-component"));
   
   expect(screen.queryByRole("button")).not.toBeInTheDocument();
 });

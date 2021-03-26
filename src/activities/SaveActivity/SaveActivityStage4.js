@@ -13,7 +13,7 @@ class SaveActivityStage4 extends Component {
     let link = `${window.location.protocol}//${window.location.host}?id=${this.props.cipherText}`;
     
     return (
-      <ActivityStage components={
+      <ActivityStage>
         <ContentBlock
           title={
             <FormattedMessage
@@ -32,7 +32,7 @@ class SaveActivityStage4 extends Component {
             <a data-testid="final-link" href={link}>{link}</a>
           </p>
         </ContentBlock>
-      } instructions="" />
+      </ActivityStage>
     );
   }
 }

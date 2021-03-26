@@ -1,5 +1,5 @@
 // React imports
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Component imports
@@ -56,12 +56,10 @@ class LoadActivityStage2 extends Component {
     });
     
     return (
-      <ActivityStage components={
-        <Fragment>
+      <ActivityStage advanceSection={this.advanceSection} >
           <DiscoveredDataBlock users={this.props.users} />
           {credentials}
-        </Fragment>
-      } instructions={<LoadText />} advanceSection={this.advanceSection} />
+      </ActivityStage>
     );
   }
 }

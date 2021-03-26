@@ -1,0 +1,19 @@
+.mr-auto {
+  margin-right: auto;
+}
+
+.main {
+  min-height: 20vh;
+}
+
+.sidebar {
+  min-height: 20vh;
+}
+
+.header {
+  margin-bottom: 2em;
+}
+
+.footer {
+  margin-top: 2vh;
+}

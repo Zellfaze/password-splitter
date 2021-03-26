@@ -51,9 +51,9 @@ class LoadActivityStage1 extends Component {
   
   render() {
     return (
-      <ActivityStage components={
+      <ActivityStage advanceSection={this.advanceSection} >
         <KeyInputBlock onChange={this.setID} keyID={this.state.id} />
-      } instructions={<LoadText />} advanceSection={this.advanceSection} />
+      </ActivityStage>
     );
   }
 }

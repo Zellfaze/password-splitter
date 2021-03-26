@@ -32,7 +32,7 @@ class SaveActivityStage1 extends Component {
   
   render() {
     return (
-      <ActivityStage components={
+      <ActivityStage advanceSection={this.advanceSection}>
         <InputBlock
           title={
             <FormattedMessage
@@ -58,7 +58,7 @@ class SaveActivityStage1 extends Component {
           }
           text={this.state.plainText}
         />
-      } instructions={<SaveText />} advanceSection={this.advanceSection} />
+      </ActivityStage>
     );
   }
 }

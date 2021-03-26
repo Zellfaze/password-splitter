@@ -35,9 +35,9 @@ class SaveActivityStage2 extends Component {
   
   render() {
     return (
-      <ActivityStage components={
+      <ActivityStage advanceSection={this.advanceSection}>
         <XofNBlock setGroupSize={this.setGroupSize} setRequiredMembers={this.setRequiredMembers} groupSize={this.state.groupSize} requiredMembers={this.state.requiredMembers}/>
-      } instructions={<SaveText />} advanceSection={this.advanceSection} />
+      </ActivityStage>
     );
   }
 }

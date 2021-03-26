@@ -1,5 +1,6 @@
 // React imports
-import React, { Component } from 'react';
+import { Fragment, Component } from 'react';
+import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
 // Activity stage imports
@@ -7,6 +8,10 @@ import SaveActivityStage1 from './SaveActivity/SaveActivityStage1.js';
 import SaveActivityStage2 from './SaveActivity/SaveActivityStage2.js';
 import SaveActivityStage3 from './SaveActivity/SaveActivityStage3.js';
 import SaveActivityStage4 from './SaveActivity/SaveActivityStage4.js';
+
+// Component imports
+import MainBox from '../components/MainBox.js';
+import Sidebar from '../components/Sidebar.js';
 
 // Other imports
 import CryptoFunctions from '../lib/crypto.js';
@@ -98,25 +103,43 @@ class SaveActivity extends Component {
   }
   
   render() {
+    let loadedStage;
     switch(this.state.stagenumber) {
       default:
       case stages.PLAINTEXT:
-        return (
+        loadedStage = (
           <SaveActivityStage1 onNextSection={this.advanceSection1} />
         );
+        break;
       case stages.XOFN:
-        return (
+        loadedStage = (
           <SaveActivityStage2 onNextSection={this.advanceSection2} />
         );
+        break;
       case stages.CREDENTIALS:
-        return (
+        loadedStage = (
           <SaveActivityStage3 onNextSection={this.advanceSection3} groupSize={this.state.groupSize} />
         );
+        break;
       case stages.CIPHERTEXT:
-        return (
+        loadedStage = (
           <SaveActivityStage4 cipherText={this.state.cipherText} />
         );
+        break;
     }
+    
+    return (
+      <Fragment>
+        <MainBox>
+          <h1><FormattedMessage id="header-save" defaultMessage="Save Activity" description="Title text in header when Save Activity is active"/></h1>
+          {loadedStage}
+        </MainBox>
+        <Sidebar>
+          <h1 className="h4">Instructions</h1>
+          <p>PLEASE CHANGE AND TRANSLATE ME! (plus above header)</p>
+        </Sidebar>
+      </Fragment>
+    );
   }
 }
 

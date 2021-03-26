@@ -1,11 +1,16 @@
 // React imports
-import React, { Component } from 'react';
+import { Fragment, Component } from 'react';
+import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
 // Activity Stage imports
 import LoadActivityStage1 from './LoadActivity/LoadActivityStage1.js';
 import LoadActivityStage2 from './LoadActivity/LoadActivityStage2.js';
 import LoadActivityStage3 from './LoadActivity/LoadActivityStage3.js';
+
+// Component imports
+import MainBox from '../components/MainBox.js';
+import Sidebar from '../components/Sidebar.js';
 
 // Other imports
 import CryptoFunctions from '../lib/crypto.js';
@@ -58,21 +63,38 @@ class LoadActivity extends Component {
   }
   
   render() {
+    let loadedStage;
     switch(this.state.stagenumber) {
       default:
       case stages.CIPHERTEXT:
-        return (
+        loadedStage = (
           <LoadActivityStage1 onNextSection={this.advanceSection1} addMessage={this.props.addMessage} id={this.props.id} />
         );
+        break;
       case stages.CREDENTIALS:
-        return (
+        loadedStage =(
           <LoadActivityStage2 onNextSection={this.advanceSection2} groupSize={this.state.requiredMembers} users={this.state.foundUsers} />
         );
+        break;
       case stages.PLAINTEXT:
-        return (
+        loadedStage =(
           <LoadActivityStage3 text={this.state.plainText} />
         );
+        break;
     }
+    
+    return (
+      <Fragment>
+        <MainBox>
+          <h1><FormattedMessage id="header-load" defaultMessage="Load Activity" description="Title text in header when Load Activity is active"/></h1>
+          {loadedStage}
+        </MainBox>
+        <Sidebar>
+          <h1 className="h4">Instructions</h1>
+          <p>PLEASE CHANGE AND TRANSLATE ME! (plus above header)</p>
+        </Sidebar>
+      </Fragment>
+    );
   }
 }
 

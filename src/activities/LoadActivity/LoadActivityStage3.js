@@ -10,9 +10,9 @@ import LoadText from './LoadText.js';
 class LoadActivityStage3 extends Component {
   render() {
     return (
-      <ActivityStage components={
+      <ActivityStage>
         <CipherTextBlock cipherText={this.props.text} />
-      } instructions={<LoadText />} />
+      </ActivityStage>
     );
   }
 }

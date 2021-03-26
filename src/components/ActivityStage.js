@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 // Component imports
 import NextButton from './widgets/NextButton.js';
 
-function ActivityStage({advanceSection, instructions, components}) {
+function ActivityStage({advanceSection, children}) {
   let button = null;
   
   if (typeof advanceSection !== 'undefined') {
@@ -17,8 +17,7 @@ function ActivityStage({advanceSection, instructions, components}) {
   
   return (
     <Container className="mt-2">
-      {instructions}
-      {components}
+      {children}
       {button}
     </Container>
   );
@@ -26,8 +25,7 @@ function ActivityStage({advanceSection, instructions, components}) {
 
 ActivityStage.propTypes = {
   advanceSection: PropTypes.func,
-  instructions: PropTypes.node.isRequired,
-  components: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default ActivityStage;

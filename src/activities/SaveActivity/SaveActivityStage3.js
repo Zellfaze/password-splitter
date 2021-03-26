@@ -55,7 +55,9 @@ class SaveActivityStage3 extends Component {
     });
     
     return (
-      <ActivityStage components={credentials} instructions={<SaveText />} advanceSection={this.advanceSection} />
+      <ActivityStage advanceSection={this.advanceSection}>
+        {credentials}
+      </ActivityStage>
     );
   }
 }

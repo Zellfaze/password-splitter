@@ -1,20 +1,25 @@
-import React, { Component } from 'react';
-import constants from './lib/constants.js';
-
-// I18n
-import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
+// React imports
+import React, { Fragment, Component } from 'react';
+import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl';
 import I18nMessages from './lib/i18n.js';
+
+// Bootstrap imports
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 // Activities
 import HomeActivity from './activities/HomeActivity.js';
 import SaveActivity from './activities/SaveActivity.js';
 import LoadActivity from './activities/LoadActivity.js';
 
-//Components
-import HeaderBlock from './components/header/HeaderBlock.js';
+// Component imports
+import Header from './components/header/Header.js';
 import ErrorBlock from './components/messages/ErrorBlock.js';
 
-const validParamSize = 16;
+// Other imports
+import constants from './lib/constants.js';
+import './home.css';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +28,7 @@ class App extends Component {
     // Check the URLSearchParams for an ID, if there is one, let's start on
     // the LOAD activity and jump right in.
     let initID = null;
-    let initActivity = constants.activities.HOME;
+    let initActivity = 55;
     const params = new URLSearchParams(window.location.search);
     if (params.has("id") && (params.get("id").length === validParamSize)) {
       initID = params.get("id");
@@ -68,38 +73,40 @@ class App extends Component {
     this.setState({messages: newMessages});
   }
   
+  changeActivity(newActivity) {
+    this.setState({ currentActivity: newActivity, id: "" });
+  }
+  
   render() {
     let loadedActivity;
-    let headerText;
     switch(this.state.currentActivity) {
       default:
       case constants.activities.HOME:
         loadedActivity = (<HomeActivity changeActivity={this.changeActivity} addMessage={this.addMessage}/>);
-        headerText = (<FormattedMessage id="header-main" defaultMessage="Password Splitter" description="Title text in header when no activity has been selected"/>);
         break;
       case constants.activities.SAVE:
         loadedActivity = (<SaveActivity addMessage={this.addMessage} />);
-        headerText = (<FormattedMessage id="header-save" defaultMessage="Save Activity" description="Title text in header when Save Activity is active"/>);
         break;
       case constants.activities.LOAD:
         loadedActivity = (<LoadActivity addMessage={this.addMessage} id={this.state.id} />);
-        headerText = (<FormattedMessage id="header-load" defaultMessage="Load Activity" description="Title text in header when Load Activity is active"/>);
         break;
     }
     
     return (
       <IntlProvider messages={this.state.l10n} locale={this.state.language} defaultLocale="en">
-        <div>
-          <HeaderBlock headerText={headerText} changeActivity={this.changeActivity}/>
-          <ErrorBlock messages={this.state.messages} removeMessage={this.removeMessage}/>
-          {loadedActivity}
-        </div>
+        <Header changeActivity={this.changeActivity} />
+        <ErrorBlock messages={this.state.messages} removeMessage={this.removeMessage}/>
+        <Container fluid className="ml-1">
+          <Row>
+            {loadedActivity}
+          </Row>
+          
+          <Row as="footer" className="footer">
+              <Col><p className="small"><FormattedMessage id="footer-main" defaultMessage="Footer text" description="Text displayed in footer of all pages"/></p></Col>
+          </Row>
+        </Container>
       </IntlProvider>
     );
-  }
-  
-  changeActivity(newActivity) {
-    this.setState({ currentActivity: newActivity, id: "" });
   }
 }
 

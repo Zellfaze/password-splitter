@@ -1,5 +1,6 @@
 // React imports
-import React, { Component } from 'react';
+import { Fragment, Component } from 'react';
+import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
 // Bootstrap imports
@@ -8,8 +9,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 
+// Component imports
+import MainBox from '../components/MainBox.js';
+import Sidebar from '../components/Sidebar.js';
+
 // Other imports
 import constants from '../lib/constants.js';
+
 
 class HomeActivity extends Component {
   constructor(props) {
@@ -30,12 +36,19 @@ class HomeActivity extends Component {
   render() {
     //TODO: Translate strings on these AutoColButtonComponents
     return (
-      <Container fluid className="mt-2">
-        <Row className="justify-content-center">
-          <AutoColButtonComponent type="primary" onClick={this.onClickSave} text="Save" /> 
-          <AutoColButtonComponent type="secondary" onClick={this.onClickLoad} text="Load" />
-        </Row>
-      </Container>
+      <Fragment>
+        <MainBox>
+          <h1><FormattedMessage id="header-main" defaultMessage="Password Splitter" description="Title text in header when no activity has been selected"/></h1>
+          <Row className="justify-content-center">
+            <AutoColButtonComponent type="primary" onClick={this.onClickSave} text="Save" /> 
+            <AutoColButtonComponent type="secondary" onClick={this.onClickLoad} text="Load" />
+          </Row>
+        </MainBox>
+        <Sidebar>
+          <h1 className="h4">Instructions</h1>
+          <p>PLEASE CHANGE AND TRANSLATE ME! (plus above header)</p>
+        </Sidebar>
+      </Fragment>
     );
   }
 }
