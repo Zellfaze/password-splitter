@@ -51,7 +51,9 @@ class App extends Component {
     this.removeMessage = this.removeMessage.bind(this);
   }
   
-  addMessage(message, level) {
+  addMessage(message, level = "danger") {
+    message = String(message);
+    
     let currentMessages = this.state.messages;
     let id = Math.floor((Math.random() * 1000000));
     currentMessages.push({

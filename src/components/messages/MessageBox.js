@@ -31,12 +31,6 @@ class MessageBox extends Component {
       removeMessage
     } = this.props;
     
-    // If this is an error object instead of a raw string, extract the message
-    let displayedMessage = message;
-    if (typeof message === "object") {
-      displayedMessage = message.message;
-    }
-    
     let classes = `alert alert-dismissible alert-${level}`;
     const close = (
       <FormattedMessage
