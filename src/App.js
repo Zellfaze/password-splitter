@@ -94,33 +94,38 @@ class App extends Component {
     this.setState({ currentActivity: newActivity, id: "" });
   }
   
-  loginUser(username, password) {
-    api.loginUser(username, password).then( (user) => {
-      this.setState({
-        user: user,
-        currentActivity: constants.activities.HOME
-      });
-    }).catch( (err) => {
+  async loginUser(username, password) {
+    let user;
+    try {
+      user = await api.loginUser(username, password);
+    } catch (err) {
       this.addMessage(err);
+    }
+    
+    this.setState({
+      user: user,
+      currentActivity: constants.activities.HOME
     });
   }
   
-  logoutUser() {
-    api.logout().then( () => {
+  async logoutUser() {
+    try {
+      await api.logout()
       this.setState({
         user: null
       });
-    }).catch( (err) => {
+    } catch (err) {
       this.addMessage(err);
-    });
+    }
   }
   
-  registerUser(username, password) {
-    api.registerUser(username, password).then( (user) => {
+  async registerUser(username, password) {
+    try {
+      let user = await api.registerUser(username, password);
       this.loginUser(username, password);
-    }).catch( (err) => {
+    } catch (err) {
       this.addMessage(err);
-    });
+    }
   }
   
   render() {

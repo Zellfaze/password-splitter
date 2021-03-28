@@ -9,136 +9,155 @@ const api = {
   registerUser: registerUser,
 }
 
-function saveBlob(blob) {
+async function saveBlob(blob) {
   var mutation = `mutation createBlob($data: String!) { createBlob(data: $data) { id, data }}`;
   
-  return fetch(`graphql`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({
-      query: mutation,
-      variables: { data: blob }
-    })
-  }).then( (response) => {
+  try {
+    let response = await fetch(`graphql`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query: mutation,
+        variables: { data: blob }
+      })
+    });
+    
     if (response.status == 200) {
-      return response.json()
+      let json = await response.json();
+      return json.data.createBlob;
     }
+    
     return Promise.reject("Error saving blob");
-  }).then( (json) => {
-    return json.data.createBlob;
-  });
+  } catch (err) {
+    return Promise.reject("Error saving blob");
+  }
 }
 
-function loadBlob(id) {
+async function loadBlob(id) {
   var query = `query blob($id: String!) { blob(id: $id) { id, data }}`;
   
-  return fetch(`graphql`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({
-      query: query,
-      variables: { id: id }
-    })
-  }).then( (response) => {
+  try {
+    let response = await fetch(`graphql`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query: query,
+        variables: { id: id }
+      })
+    });
+    
     if (response.status == 200) {
-      return response.json()
+      let json = await response.json();
+      return json.data.blob;
     }
+    
     return Promise.reject("Error loading blob");
-  }).then( (json) => {
-    return json.data.blob;
-  });
+  } catch (err) {
+    return Promise.reject("Error loading blob");
+  }
 }
 
-function loginUser(username, password) {
-  return fetch(`login`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({
-      username, password
-    })
-  }).then( (response) => {
+async function loginUser(username, password) {
+  try {
+    let response = await fetch(`login`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        username, password
+      })
+    });
+    
     if (response.status == 401) {
       return Promise.reject("Invalid username/password");
     }
+    
     if (response.status == 200) {
-      return response.json()
+      let json = await response.json();
+      return json;
     }
     return Promise.reject("Error logging in");
-  }).then( (json) => {
-    return json;
-  });
+  } catch (err) {
+    return Promise.reject("Error logging in");
+  }
 }
 
-function checkLogin() {
-  return fetch(`login`, {
-    method: "GET",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    }
-  }).then( (response) => {
+async function checkLogin() {
+  try {
+    let response = await fetch(`login`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+    
     if (response.status == 401) {
       return Promise.resolve(false);
     }
+    
     if (response.status == 200) {
-      return response.json()
+      return response.json();
     }
+    
     return Promise.reject("Error checking login");
-  }).then( (json) => {
-    return json;
-  });
+  } catch (err) {
+    return Promise.reject("Error checking login");
+  }
 }
 
-function logout() {
-  return fetch(`logout`, {
-    method: "GET",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
+async function logout() {
+  try {
+    let response = await fetch(`logout`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+    
+    if (response.status != 200) {
+      return Promise.reject("Error logging out");
     }
-  }).then( (response) => {
+    
+    let json = await response.json();
+    if (json.message !== "Success") {
+      return Promise.reject("Error logging out");
+    }
+  } catch (err) {
+    return Promise.reject("Error logging out");
+  }
+}
+
+async function registerUser(username, password) {
+  try {
+    let response = await fetch(`register`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        username, password
+      })
+    });
+    
     if (response.status == 200) {
       return response.json()
     }
-    return Promise.reject("Error logging out");
-  }).then( (json) => {
-    if (json.message === "Success") {
-      return Promise.resolve();
-    }
-    return Promise.reject("Error logging out");
-  });
-}
-
-function registerUser(username, password) {
-  return fetch(`register`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({
-      username, password
-    })
-  }).then( (response) => {
-    if (response.status == 400) {
-      return Promise.reject("Server unable to register user");
-    }
-    if (response.status == 200) {
-      return response.json()
-    }
+    
+    return Promise.reject("Server unable to register user");
+  } catch (err) {
     return Promise.reject("Error registering user");
-  }).then( (json) => {
-    return json;
-  });
+  }
 }
 
 export default api;
