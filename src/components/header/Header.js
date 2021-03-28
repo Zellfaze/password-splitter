@@ -1,5 +1,5 @@
 // React imports
-import React, { Fragment, Component } from 'react';
+import { Fragment, Component } from 'react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -7,10 +7,13 @@ import PropTypes from 'prop-types';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
+// Component imports
+import LoginButton from './LoginButton.js';
+
 // Other imports
 import constants from '../../lib/constants.js';
 
-function Header({changeActivity}) {
+function Header({changeActivity, user, logoutUser}) {
   return (
     <header className="header">
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -44,15 +47,7 @@ function Header({changeActivity}) {
               />
             </Nav.Link>
           </Nav>
-          <Nav>
-            <Nav.Link>
-              <FormattedMessage
-                id="header-nav-login"
-                defaultMessage="Login"
-                description="Text shown for login button in Navbar"
-              />
-            </Nav.Link>
-          </Nav>
+          <LoginButton user={user} logoutUser={logoutUser} changeActivity={changeActivity} />
         </Navbar.Collapse>
       </Navbar>
     </header>
@@ -60,6 +55,8 @@ function Header({changeActivity}) {
 }
 
 Header.propTypes = {
+  user: PropTypes.object,
+  logoutUser: PropTypes.func.isRequired,
   changeActivity: PropTypes.func.isRequired
 }
 

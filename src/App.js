@@ -12,6 +12,7 @@ import Col from 'react-bootstrap/Col';
 import HomeActivity from './activities/HomeActivity.js';
 import SaveActivity from './activities/SaveActivity.js';
 import LoadActivity from './activities/LoadActivity.js';
+import LoginActivity from './activities/LoginActivity.js';
 
 // Component imports
 import Header from './components/header/Header.js';
@@ -19,6 +20,7 @@ import ErrorBlock from './components/messages/ErrorBlock.js';
 
 // Other imports
 import constants from './lib/constants.js';
+import api from './lib/api.js';
 import './home.css';
 
 class App extends Component {
@@ -28,8 +30,9 @@ class App extends Component {
     // Check the URLSearchParams for an ID, if there is one, let's start on
     // the LOAD activity and jump right in.
     let initID = null;
-    let initActivity = 55;
+    let initActivity = constants.activities.HOME;
     const params = new URLSearchParams(window.location.search);
+    const validParamSize = 16;
     if (params.has("id") && (params.get("id").length === validParamSize)) {
       initID = params.get("id");
       initActivity = constants.activities.LOAD;
@@ -43,12 +46,24 @@ class App extends Component {
       messages: [],
       id: initID,
       language: i18nMessages.bestLanguage,
-      l10n: i18nMessages.messages
+      l10n: i18nMessages.messages,
+      user: null
     };
     
     this.changeActivity = this.changeActivity.bind(this);
     this.addMessage = this.addMessage.bind(this);
     this.removeMessage = this.removeMessage.bind(this);
+    this.loginUser = this.loginUser.bind(this);
+    this.registerUser = this.registerUser.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
+    
+    api.checkLogin().then( (user) => {
+      if (user) {
+        this.setState({user: user});
+      }
+    }).catch( (err) => {
+      this.addMessage("Error logging in", "danger");
+    });
   }
   
   addMessage(message, level = "danger") {
@@ -79,12 +94,41 @@ class App extends Component {
     this.setState({ currentActivity: newActivity, id: "" });
   }
   
+  loginUser(username, password) {
+    api.loginUser(username, password).then( (user) => {
+      this.setState({
+        user: user,
+        currentActivity: constants.activities.HOME
+      });
+    }).catch( (err) => {
+      this.addMessage(err);
+    });
+  }
+  
+  logoutUser() {
+    api.logout().then( () => {
+      this.setState({
+        user: null
+      });
+    }).catch( (err) => {
+      this.addMessage(err);
+    });
+  }
+  
+  registerUser(username, password) {
+    api.registerUser(username, password).then( (user) => {
+      this.loginUser(username, password);
+    }).catch( (err) => {
+      this.addMessage(err);
+    });
+  }
+  
   render() {
     let loadedActivity;
     switch(this.state.currentActivity) {
       default:
       case constants.activities.HOME:
-        loadedActivity = (<HomeActivity changeActivity={this.changeActivity} addMessage={this.addMessage}/>);
+        loadedActivity = (<HomeActivity user={this.state.user} changeActivity={this.changeActivity} addMessage={this.addMessage}/>);
         break;
       case constants.activities.SAVE:
         loadedActivity = (<SaveActivity addMessage={this.addMessage} />);
@@ -92,11 +136,14 @@ class App extends Component {
       case constants.activities.LOAD:
         loadedActivity = (<LoadActivity addMessage={this.addMessage} id={this.state.id} />);
         break;
+      case constants.activities.LOGIN:
+        loadedActivity = (<LoginActivity loginUser={this.loginUser} registerUser={this.registerUser} />);
+        break;
     }
     
     return (
       <IntlProvider messages={this.state.l10n} locale={this.state.language} defaultLocale="en">
-        <Header changeActivity={this.changeActivity} />
+        <Header changeActivity={this.changeActivity} user={this.state.user} logoutUser={this.logoutUser} />
         <ErrorBlock messages={this.state.messages} removeMessage={this.removeMessage}/>
         <Container fluid className="ml-1">
           <Row>

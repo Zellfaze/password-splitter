@@ -17,31 +17,14 @@ import Sidebar from '../components/Sidebar.js';
 import constants from '../lib/constants.js';
 
 
-class HomeActivity extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.onClickSave = this.onClickSave.bind(this);
-    this.onClickLoad = this.onClickLoad.bind(this);
-  }
-  
-  onClickSave() {
-    this.props.changeActivity(constants.activities.SAVE);
-  }
-  
-  onClickLoad() {
-    this.props.changeActivity(constants.activities.LOAD);
-  }
-  
-  render() {
-    //TODO: Translate strings on these AutoColButtonComponents
+function HomeActivity({user, changeActivity}) {
+  if ((user === null) || (user === undefined)) {
     return (
       <Fragment>
         <MainBox>
           <h1><FormattedMessage id="header-main" defaultMessage="Password Splitter" description="Title text in header when no activity has been selected"/></h1>
           <Row className="justify-content-center">
-            <AutoColButtonComponent type="primary" onClick={this.onClickSave} text="Save" /> 
-            <AutoColButtonComponent type="secondary" onClick={this.onClickLoad} text="Load" />
+            <Col><p>Please login to continue</p></Col>
           </Row>
         </MainBox>
         <Sidebar>
@@ -51,9 +34,27 @@ class HomeActivity extends Component {
       </Fragment>
     );
   }
+  
+  //TODO: Translate strings on these AutoColButtonComponents
+  return (
+    <Fragment>
+      <MainBox>
+        <h1><FormattedMessage id="header-main" defaultMessage="Password Splitter" description="Title text in header when no activity has been selected"/></h1>
+        <Row className="justify-content-center">
+          <AutoColButtonComponent type="primary" onClick={() => changeActivity(constants.activities.SAVE)} text="Save" /> 
+          <AutoColButtonComponent type="secondary" onClick={() => changeActivity(constants.activities.LOAD)} text="Load" />
+        </Row>
+      </MainBox>
+      <Sidebar>
+        <h1 className="h4">Instructions</h1>
+        <p>PLEASE CHANGE AND TRANSLATE ME! (plus above header)</p>
+      </Sidebar>
+    </Fragment>
+  );
 }
 
 HomeActivity.propTypes = {
+  user: PropTypes.object,
   changeActivity: PropTypes.func.isRequired
 };
 
